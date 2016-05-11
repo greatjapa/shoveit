@@ -9,7 +9,7 @@ public class InspectorTest {
     @Test
     public void test(){
         Inspector inspector = new Inspector();
-        String result = inspector.getFields(Person.class);
+        String result = inspector.fieldsAsString(Person.class);
         System.out.println(result);
     }
 
