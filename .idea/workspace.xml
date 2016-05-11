@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3b8a650f-ccea-4638-8b47-def0ee154c80" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/target/classes/com/skatepark/shoveit/Inspector.class" afterPath="$PROJECT_DIR$/code/target/classes/com/skatepark/shoveit/Inspector.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/target/test-classes/com/skatepark/shoveit/InspectorTest.class" afterPath="$PROJECT_DIR$/code/target/test-classes/com/skatepark/shoveit/InspectorTest.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/src/main/java/com/skatepark/shoveit/Inspector.java" afterPath="$PROJECT_DIR$/code/src/main/java/com/skatepark/shoveit/Inspector.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/src/test/java/com/skatepark/shoveit/InspectorTest.java" afterPath="$PROJECT_DIR$/code/src/test/java/com/skatepark/shoveit/InspectorTest.java" />
     </list>
     <ignored path="shoveit.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -301,7 +298,7 @@
       <recent name="$PROJECT_DIR$/code/src/test/java/com/skatepark/shoveit/pojo" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.InspectorTest.test">
+  <component name="RunManager" selected="JUnit.InspectorTest">
     <configuration default="false" name="InspectorTest.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -607,8 +604,8 @@
     </list>
     <recent_temporary>
       <list size="2">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.InspectorTest.test" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.InspectorTest" />
+        <item index="0" class="java.lang.String" itemvalue="JUnit.InspectorTest" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.InspectorTest.test" />
       </list>
     </recent_temporary>
   </component>
@@ -626,9 +623,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="InspectorTest - 2016.05.11 at 15h 39m 56s.xml">
-      <configuration name="InspectorTest" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="InspectorTest - 2016.05.11 at 15h 41m 43s.xml">
       <configuration name="InspectorTest" configurationId="JUnit" />
     </history-entry>
@@ -645,6 +639,9 @@
       <configuration name="InspectorTest" configurationId="JUnit" />
     </history-entry>
     <history-entry file="InspectorTest - 2016.05.11 at 16h 10m 15s.xml">
+      <configuration name="InspectorTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="InspectorTest - 2016.05.11 at 16h 21m 30s.xml">
       <configuration name="InspectorTest" configurationId="JUnit" />
     </history-entry>
     <history-entry file="InspectorTest_test - 2016.05.11 at 16h 01m 48s.xml">
@@ -669,11 +666,11 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3283582" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3283582" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24962063" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24962063" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
