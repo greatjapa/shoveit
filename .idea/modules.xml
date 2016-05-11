@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/code/com.skatepark.shoveit.iml" filepath="$PROJECT_DIR$/code/com.skatepark.shoveit.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/shoveit.iml" filepath="$PROJECT_DIR$/.idea/shoveit.iml" />
     </modules>
   </component>
 </project>
