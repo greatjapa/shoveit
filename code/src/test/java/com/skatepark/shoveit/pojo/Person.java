@@ -1,14 +1,19 @@
 package com.skatepark.shoveit.pojo;
 
+import java.util.List;
+
 public class Person {
 
     private String name;
 
-    private String middleName;
-
-    private String lastName;
-
     private int age;
+
+    private List<Person> friends;
+
+    public Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
 
     public String getName() {
         return name;
@@ -18,27 +23,15 @@ public class Person {
         this.name = name;
     }
 
-    public String getMiddleName() {
-        return middleName;
-    }
-
-    public void setMiddleName(String middleName) {
-        this.middleName = middleName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
     public int getAge() {
         return age;
     }
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public List<Person> getFriends(){
+        return friends;
     }
 }
