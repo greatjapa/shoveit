@@ -22,10 +22,12 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
+        <module name="code" />
         <module name="com.skatepark.shoveit" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="code" target="1.8" />
       <module name="com.skatepark.shoveit" target="1.8" />
     </bytecodeTargetLevel>
   </component>
