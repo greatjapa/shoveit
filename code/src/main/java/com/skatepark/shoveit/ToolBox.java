@@ -1,6 +1,7 @@
 package com.skatepark.shoveit;
 
 import com.skatepark.shoveit.field.FieldTS;
+import com.skatepark.shoveit.field.FieldValueTS;
 
 import java.util.Arrays;
 import java.util.stream.Collectors;
@@ -27,15 +28,9 @@ public class ToolBox {
     }
 
     public static String values(Object object, String format) {
+        FieldValueTS fieldValueTs = new FieldValueTS(format);
         return object == null ? "" : Arrays.stream(object.getClass().getDeclaredFields())
-                .map(field -> {
-                    field.setAccessible(true);
-                    try {
-                        field.get(object);
-                    } catch (IllegalAccessException e) {
-                        e.printStackTrace();
-                    }
-                })
+                .map(field -> fieldValueTs.get(field, object))
                 .collect(Collectors.joining(LINE_SEPARATOR));
     }
 }

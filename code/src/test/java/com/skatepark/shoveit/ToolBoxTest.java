@@ -6,6 +6,6 @@ public class ToolBoxTest {
 
     @Test
     public void foo() {
-        System.out.println(ToolBox.ft(String.class, "\"%s\" : \"%s\""));
+        System.out.println(ToolBox.values("japa", "\"%s\" : \"%s\""));
     }
 }

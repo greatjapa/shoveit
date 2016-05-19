@@ -13,8 +13,18 @@ public class FieldValueTS {
         this.format = format;
     }
 
-    public Object get(Field field, Object object) throws IllegalAccessException {
-        field.setAccessible(true);
-        return field.get(object);
+    public String get(Field field, Object object) {
+        try {
+            boolean accessible = field.isAccessible();
+            field.setAccessible(true);
+            Object result = field.get(object);
+            field.setAccessible(accessible);
+
+            String fieldName = field.getType().getSimpleName();
+
+            return result == null ? "null" : String.format(format, fieldName, result.toString());
+        } catch (IllegalAccessException e) {
+            return null;
+        }
     }
 }
