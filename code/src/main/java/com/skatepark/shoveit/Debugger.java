@@ -30,7 +30,6 @@ public class Debugger {
         return types(clazz, DEFAULT_FORMAT);
     }
 
-
     public Debugger values(Object object) {
         return values(object, DEFAULT_FORMAT);
     }
@@ -45,10 +44,11 @@ public class Debugger {
             throw new IllegalArgumentException("Unexpected parameters: " + msg);
         }
 
-        String result = Arrays.stream(clazz.getDeclaredFields())
+        Arrays.stream(clazz.getDeclaredFields())
                 .map(field -> FieldTS.type(format, field))
-                .collect(Collectors.joining(LINE_SEPARATOR, "", LINE_SEPARATOR));
-        return write(result);
+                .map(line -> line.concat(LINE_SEPARATOR))
+                .forEach(this::write);
+        return this;
     }
 
     public Debugger values(Object object, String format) {
@@ -56,10 +56,12 @@ public class Debugger {
             String msg = String.format("object: %s , format: %s", object, format);
             throw new IllegalArgumentException("Unexpected parameters: " + msg);
         }
-        String result = Arrays.stream(object.getClass().getDeclaredFields())
+
+        Arrays.stream(object.getClass().getDeclaredFields())
                 .map(field -> FieldTS.value(format, field, object))
-                .collect(Collectors.joining(LINE_SEPARATOR, "", LINE_SEPARATOR));
-        return write(result);
+                .map(line -> line + LINE_SEPARATOR)
+                .forEach(this::write);
+        return this;
     }
 
 
