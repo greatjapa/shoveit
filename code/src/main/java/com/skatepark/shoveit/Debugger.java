@@ -39,8 +39,7 @@ public class Debugger {
         String result = Arrays.stream(clazz.getDeclaredFields())
                 .map(field -> FieldTS.type(format, field))
                 .collect(Collectors.joining(LINE_SEPARATOR, "", LINE_SEPARATOR));
-        write(result);
-        return this;
+        return write(result);
     }
 
     public Debugger values(Object object) {
@@ -55,20 +54,22 @@ public class Debugger {
         String result = Arrays.stream(object.getClass().getDeclaredFields())
                 .map(field -> FieldTS.value(format, field, object))
                 .collect(Collectors.joining(LINE_SEPARATOR, "", LINE_SEPARATOR));
-        write(result);
-        return this;
+        return write(result);
     }
 
-    public Debugger ln(){
-        write(LINE_SEPARATOR);
-        return this;
+    public Debugger ln() {
+        return write(LINE_SEPARATOR);
     }
 
-    private void write(String value) {
+    public Debugger write(String value) {
+        if (value == null) {
+            throw new IllegalArgumentException("value cannot be null.");
+        }
         try {
             out.write(value.getBytes());
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return this;
     }
 }

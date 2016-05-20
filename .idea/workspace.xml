@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3b8a650f-ccea-4638-8b47-def0ee154c80" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/src/main/java/com/skatepark/shoveit/Debugger.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/src/test/java/com/skatepark/shoveit/DebuggerTest.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/code/src/main/java/com/skatepark/shoveit/ToolBox.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/code/src/main/java/com/skatepark/shoveit/field/FieldValueTS.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/code/src/test/java/com/skatepark/shoveit/ToolBoxTest.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/src/main/java/com/skatepark/shoveit/field/FieldTS.java" afterPath="$PROJECT_DIR$/code/src/main/java/com/skatepark/shoveit/field/FieldTS.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/src/main/java/com/skatepark/shoveit/Debugger.java" afterPath="$PROJECT_DIR$/code/src/main/java/com/skatepark/shoveit/Debugger.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/src/test/java/com/skatepark/shoveit/DebuggerTest.java" afterPath="$PROJECT_DIR$/code/src/test/java/com/skatepark/shoveit/DebuggerTest.java" />
     </list>
     <ignored path="shoveit.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -41,26 +36,28 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Debugger.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Debugger.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/code/src/main/java/com/skatepark/shoveit/Debugger.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="108">
-              <caret line="11" column="39" selection-start-line="11" selection-start-column="39" selection-end-line="11" selection-end-column="39" />
+            <state relative-caret-position="559">
+              <caret line="66" column="9" selection-start-line="66" selection-start-column="9" selection-end-line="66" selection-end-column="9" />
               <folding>
                 <element signature="e#429#430#0" expanded="true" />
                 <element signature="e#461#462#0" expanded="true" />
-                <element signature="e#1311#1312#0" expanded="true" />
-                <element signature="e#1364#1365#0" expanded="true" />
+                <element signature="e#1297#1298#0" expanded="true" />
+                <element signature="e#1350#1351#0" expanded="true" />
+                <element signature="e#1923#1924#0" expanded="true" />
+                <element signature="e#1967#1968#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DebuggerTest.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="DebuggerTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/code/src/test/java/com/skatepark/shoveit/DebuggerTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+            <state relative-caret-position="270">
+              <caret line="15" column="30" selection-start-line="15" selection-start-column="30" selection-end-line="15" selection-end-column="30" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -749,8 +746,8 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.DebuggerTest" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.DebuggerTest.foo" />
+        <item index="0" class="java.lang.String" itemvalue="JUnit.DebuggerTest.foo" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.DebuggerTest" />
         <item index="2" class="java.lang.String" itemvalue="Application.FieldValueTS" />
         <item index="3" class="java.lang.String" itemvalue="JUnit.InspectorTest" />
         <item index="4" class="java.lang.String" itemvalue="JUnit.InspectorTest.test" />
@@ -771,14 +768,11 @@
       <option name="presentableId" value="Default" />
       <updated>1462991118873</updated>
       <workItem from="1463624265026" duration="3261000" />
-      <workItem from="1463714855902" duration="3681000" />
+      <workItem from="1463714855902" duration="4313000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="DebuggerTest - 2016.05.20 at 01h 36m 44s.xml">
-      <configuration name="DebuggerTest" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="DebuggerTest - 2016.05.20 at 01h 40m 49s.xml">
       <configuration name="DebuggerTest" configurationId="JUnit" />
     </history-entry>
@@ -803,12 +797,15 @@
     <history-entry file="DebuggerTest_foo - 2016.05.20 at 01h 41m 17s.xml">
       <configuration name="DebuggerTest.foo" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ToolBoxTest - 2016.05.20 at 01h 17m 36s.xml">
-      <configuration name="ToolBoxTest" configurationId="JUnit" />
+    <history-entry file="DebuggerTest_foo - 2016.05.20 at 01h 52m 55s.xml">
+      <configuration name="DebuggerTest.foo" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DebuggerTest_foo - 2016.05.20 at 01h 53m 13s.xml">
+      <configuration name="DebuggerTest.foo" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6942000" />
+    <option name="totallyTimeSpent" value="7574000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="27" width="1366" height="741" extended-state="6" />
@@ -861,7 +858,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32376397" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32376397" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27818447" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -1131,19 +1128,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/code/src/main/java/com/skatepark/shoveit/Debugger.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="11" column="39" selection-start-line="11" selection-start-column="39" selection-end-line="11" selection-end-column="39" />
-          <folding>
-            <element signature="e#429#430#0" expanded="true" />
-            <element signature="e#461#462#0" expanded="true" />
-            <element signature="e#1311#1312#0" expanded="true" />
-            <element signature="e#1364#1365#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/code/src/main/java/com/skatepark/shoveit/field/FieldTS.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="271">
@@ -1154,10 +1138,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/code/src/test/java/com/skatepark/shoveit/DebuggerTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+        <state relative-caret-position="270">
+          <caret line="15" column="30" selection-start-line="15" selection-start-column="30" selection-end-line="15" selection-end-column="30" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/src/main/java/com/skatepark/shoveit/Debugger.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="559">
+          <caret line="66" column="9" selection-start-line="66" selection-start-column="9" selection-end-line="66" selection-end-column="9" />
+          <folding>
+            <element signature="e#429#430#0" expanded="true" />
+            <element signature="e#461#462#0" expanded="true" />
+            <element signature="e#1297#1298#0" expanded="true" />
+            <element signature="e#1350#1351#0" expanded="true" />
+            <element signature="e#1923#1924#0" expanded="true" />
+            <element signature="e#1967#1968#0" expanded="true" />
           </folding>
         </state>
       </provider>
