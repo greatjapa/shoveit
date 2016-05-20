@@ -59,7 +59,7 @@ public class Debugger {
 
         Arrays.stream(object.getClass().getDeclaredFields())
                 .map(field -> FieldTS.value(format, field, object))
-                .map(line -> line + LINE_SEPARATOR)
+                .map(line -> line.concat(LINE_SEPARATOR))
                 .forEach(this::write);
         return this;
     }
