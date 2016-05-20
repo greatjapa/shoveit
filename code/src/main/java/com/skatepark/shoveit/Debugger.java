@@ -30,6 +30,15 @@ public class Debugger {
         return types(clazz, DEFAULT_FORMAT);
     }
 
+
+    public Debugger values(Object object) {
+        return values(object, DEFAULT_FORMAT);
+    }
+
+    public Debugger ln() {
+        return write(LINE_SEPARATOR);
+    }
+
     public Debugger types(Class clazz, String format) {
         if (clazz == null || format == null) {
             String msg = String.format("clazz: %s , format: %s", clazz, format);
@@ -40,10 +49,6 @@ public class Debugger {
                 .map(field -> FieldTS.type(format, field))
                 .collect(Collectors.joining(LINE_SEPARATOR, "", LINE_SEPARATOR));
         return write(result);
-    }
-
-    public Debugger values(Object object) {
-        return values(object, DEFAULT_FORMAT);
     }
 
     public Debugger values(Object object, String format) {
@@ -57,9 +62,6 @@ public class Debugger {
         return write(result);
     }
 
-    public Debugger ln() {
-        return write(LINE_SEPARATOR);
-    }
 
     public Debugger write(String value) {
         if (value == null) {
