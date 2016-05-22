@@ -73,7 +73,8 @@ public class Debugger {
 
         Arrays.stream(clazz.getDeclaredFields())
                 .filter(filter)
-                .map(field -> String.format(format, field.getName(), field.getType().getSimpleName()))
+                .map(field -> new Object[]{field.getName(), field.getType().getSimpleName()})
+                .map(args -> String.format(format, args))
                 .map(line -> line.concat(LINE_SEPARATOR))
                 .forEach(this::write);
         return this;
@@ -87,7 +88,8 @@ public class Debugger {
 
         Arrays.stream(object.getClass().getDeclaredFields())
                 .filter(filter)
-                .map(field -> String.format(format, field.getName(), getFieldValue(field, object)))
+                .map(field -> new Object[]{field.getName(), getFieldValue(field, object)})
+                .map(args -> String.format(format, args))
                 .map(line -> line.concat(LINE_SEPARATOR))
                 .forEach(this::write);
         return this;

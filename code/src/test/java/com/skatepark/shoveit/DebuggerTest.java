@@ -11,7 +11,7 @@ public class DebuggerTest {
         new Debugger()
                 .types(Properties.class)
                 .ln()
-                .valuesNull(new Properties())
+                .values(new Properties())
                 .ln()
                 .write("end");
     }
