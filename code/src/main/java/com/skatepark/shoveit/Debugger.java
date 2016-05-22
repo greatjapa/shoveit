@@ -46,7 +46,7 @@ public class Debugger {
     }
 
     public Debugger valuesNull(String format, Object object) {
-        return values(format, object, field -> getFieldValue(field, object) == null);
+        return values(format, object, field -> getValue(field, object) == null);
     }
 
     public Debugger ln() {
@@ -88,14 +88,14 @@ public class Debugger {
 
         Arrays.stream(object.getClass().getDeclaredFields())
                 .filter(filter)
-                .map(field -> new Object[]{field.getName(), getFieldValue(field, object)})
+                .map(field -> new Object[]{field.getName(), getValue(field, object)})
                 .map(args -> String.format(format, args))
                 .map(line -> line.concat(LINE_SEPARATOR))
                 .forEach(this::write);
         return this;
     }
 
-    private Object getFieldValue(Field field, Object object) {
+    private Object getValue(Field field, Object object) {
         try {
             boolean accessible = field.isAccessible();
             field.setAccessible(true);
