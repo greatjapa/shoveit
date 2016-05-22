@@ -4,11 +4,15 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.lang.reflect.Field;
 import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
 import java.util.function.Predicate;
 
 public class Debugger {
 
     private static final String DEFAULT_FORMAT = "%s : %s";
+
+    private static final String SIZE_FORMAT = "size = %d";
 
     private static final String LINE_SEPARATOR = System.getProperty("line.separator");
 
@@ -25,35 +29,79 @@ public class Debugger {
         this.out = out;
     }
 
-    public Debugger types(Class clazz) {
-        return types(DEFAULT_FORMAT, clazz);
+    public Debugger printTypes(Class clazz) {
+        return printTypes(DEFAULT_FORMAT, clazz);
     }
 
-    public Debugger types(String format, Class clazz) {
-        return types(format, clazz, field -> true);
+    public Debugger printTypes(String format, Class clazz) {
+        return printTypes(format, clazz, field -> true);
     }
 
-    public Debugger values(Object object) {
-        return values(DEFAULT_FORMAT, object);
+    public Debugger printValues(Object object) {
+        return printValues(DEFAULT_FORMAT, object);
     }
 
-    public Debugger valuesNull(Object object) {
-        return valuesNull(DEFAULT_FORMAT, object);
+    public Debugger printValues(String format, Object object) {
+        return printValues(format, object, field -> true);
     }
 
-    public Debugger values(String format, Object object) {
-        return values(format, object, field -> true);
+    public Debugger printNullValues(Object object) {
+        return printNullValues(DEFAULT_FORMAT, object);
     }
 
-    public Debugger valuesNull(String format, Object object) {
-        return values(format, object, field -> getValue(field, object) == null);
+
+    public Debugger printNullValues(String format, Object object) {
+        return printValues(format, object, field -> getValue(field, object) == null);
+    }
+
+    public Debugger printMap(Map<?, ?> map) {
+        return printMap(DEFAULT_FORMAT, map);
+    }
+
+    public Debugger printMap(String format, Map<?, ?> map) {
+        if (format == null || map == null) {
+            String msg = String.format("format: %s, map: %s", format, map);
+            throw new IllegalArgumentException("Unexpected parameters: " + msg);
+        }
+
+        println(String.format(SIZE_FORMAT, map.size()));
+        map.entrySet().stream()
+                .map(entry -> new Object[]{entry.getKey(), entry.getValue()})
+                .map(args -> String.format(format, args))
+                .map(line -> line.concat(LINE_SEPARATOR))
+                .forEach(this::print);
+        return this;
+    }
+
+    public Debugger printList(List<?> list) {
+        return printList(DEFAULT_FORMAT, list);
+    }
+
+    public Debugger printList(String format, List<?> list) {
+        if (format == null || list == null) {
+            String msg = String.format("format: %s, list: %s", format, list);
+            throw new IllegalArgumentException("Unexpected parameters: " + msg);
+        }
+
+        println(String.format(SIZE_FORMAT, list.size()));
+        list.stream()
+                .map(elem -> new Object[]{list.indexOf(elem), elem})
+                .map(args -> String.format(format, args))
+                .map(line -> line.concat(LINE_SEPARATOR))
+                .forEach(this::print);
+        return this;
+    }
+
+    public Debugger println(String value) {
+        print(value);
+        return ln();
     }
 
     public Debugger ln() {
-        return write(LINE_SEPARATOR);
+        return print(LINE_SEPARATOR);
     }
 
-    public Debugger write(String value) {
+    public Debugger print(String value) {
         if (value == null) {
             throw new IllegalArgumentException("value cannot be null.");
         }
@@ -65,7 +113,7 @@ public class Debugger {
         return this;
     }
 
-    private Debugger types(String format, Class clazz, Predicate<Field> filter) {
+    private Debugger printTypes(String format, Class clazz, Predicate<Field> filter) {
         if (format == null || clazz == null) {
             String msg = String.format("format: %s, clazz: %s", format, clazz);
             throw new IllegalArgumentException("Unexpected parameters: " + msg);
@@ -76,11 +124,11 @@ public class Debugger {
                 .map(field -> new Object[]{field.getName(), field.getType().getSimpleName()})
                 .map(args -> String.format(format, args))
                 .map(line -> line.concat(LINE_SEPARATOR))
-                .forEach(this::write);
+                .forEach(this::print);
         return this;
     }
 
-    private Debugger values(String format, Object object, Predicate<Field> filter) {
+    private Debugger printValues(String format, Object object, Predicate<Field> filter) {
         if (format == null || object == null) {
             String msg = String.format("format: %s, object: %s, filter: %s", format, object, filter);
             throw new IllegalArgumentException("Unexpected parameters: " + msg);
@@ -91,7 +139,7 @@ public class Debugger {
                 .map(field -> new Object[]{field.getName(), getValue(field, object)})
                 .map(args -> String.format(format, args))
                 .map(line -> line.concat(LINE_SEPARATOR))
-                .forEach(this::write);
+                .forEach(this::print);
         return this;
     }
 
