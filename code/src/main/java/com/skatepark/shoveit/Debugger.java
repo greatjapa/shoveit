@@ -1,11 +1,10 @@
 package com.skatepark.shoveit;
 
-import com.skatepark.shoveit.field.FieldTS;
-
 import java.io.IOException;
 import java.io.OutputStream;
+import java.lang.reflect.Field;
 import java.util.Arrays;
-import java.util.stream.Collectors;
+import java.util.function.Predicate;
 
 public class Debugger {
 
@@ -27,43 +26,32 @@ public class Debugger {
     }
 
     public Debugger types(Class clazz) {
-        return types(clazz, DEFAULT_FORMAT);
+        return types(DEFAULT_FORMAT, clazz);
+    }
+
+    public Debugger types(String format, Class clazz) {
+        return types(format, clazz, field -> true);
     }
 
     public Debugger values(Object object) {
-        return values(object, DEFAULT_FORMAT);
+        return values(DEFAULT_FORMAT, object);
+    }
+
+    public Debugger valuesNull(Object object) {
+        return valuesNull(DEFAULT_FORMAT, object);
+    }
+
+    public Debugger values(String format, Object object) {
+        return values(format, object, field -> true);
+    }
+
+    public Debugger valuesNull(String format, Object object) {
+        return values(format, object, field -> getFieldValue(field, object) == null);
     }
 
     public Debugger ln() {
         return write(LINE_SEPARATOR);
     }
-
-    public Debugger types(Class clazz, String format) {
-        if (clazz == null || format == null) {
-            String msg = String.format("clazz: %s , format: %s", clazz, format);
-            throw new IllegalArgumentException("Unexpected parameters: " + msg);
-        }
-
-        Arrays.stream(clazz.getDeclaredFields())
-                .map(field -> FieldTS.type(format, field))
-                .map(line -> line.concat(LINE_SEPARATOR))
-                .forEach(this::write);
-        return this;
-    }
-
-    public Debugger values(Object object, String format) {
-        if (object == null || format == null) {
-            String msg = String.format("object: %s , format: %s", object, format);
-            throw new IllegalArgumentException("Unexpected parameters: " + msg);
-        }
-
-        Arrays.stream(object.getClass().getDeclaredFields())
-                .map(field -> FieldTS.value(format, field, object))
-                .map(line -> line.concat(LINE_SEPARATOR))
-                .forEach(this::write);
-        return this;
-    }
-
 
     public Debugger write(String value) {
         if (value == null) {
@@ -75,5 +63,45 @@ public class Debugger {
             e.printStackTrace();
         }
         return this;
+    }
+
+    private Debugger types(String format, Class clazz, Predicate<Field> filter) {
+        if (format == null || clazz == null) {
+            String msg = String.format("format: %s, clazz: %s", format, clazz);
+            throw new IllegalArgumentException("Unexpected parameters: " + msg);
+        }
+
+        Arrays.stream(clazz.getDeclaredFields())
+                .filter(filter)
+                .map(field -> String.format(format, field.getName(), field.getType().getSimpleName()))
+                .map(line -> line.concat(LINE_SEPARATOR))
+                .forEach(this::write);
+        return this;
+    }
+
+    private Debugger values(String format, Object object, Predicate<Field> filter) {
+        if (format == null || object == null) {
+            String msg = String.format("format: %s, object: %s, filter: %s", format, object, filter);
+            throw new IllegalArgumentException("Unexpected parameters: " + msg);
+        }
+
+        Arrays.stream(object.getClass().getDeclaredFields())
+                .filter(filter)
+                .map(field -> String.format(format, field.getName(), getFieldValue(field, object)))
+                .map(line -> line.concat(LINE_SEPARATOR))
+                .forEach(this::write);
+        return this;
+    }
+
+    private Object getFieldValue(Field field, Object object) {
+        try {
+            boolean accessible = field.isAccessible();
+            field.setAccessible(true);
+            Object result = field.get(object);
+            field.setAccessible(accessible);
+            return result;
+        } catch (IllegalAccessException e) {
+            return null;
+        }
     }
 }
