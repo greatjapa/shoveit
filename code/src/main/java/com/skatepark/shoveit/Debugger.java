@@ -16,7 +16,7 @@ public class Debugger {
 
     private static final String ARROW_FORMAT = "%s -> %s";
 
-    private static final String LINE_SEPARATOR = System.getProperty("line.separator");
+    private static final String LINE_SEPARATOR = System.lineSeparator();
 
     private final OutputStream out;
 
@@ -65,7 +65,7 @@ public class Debugger {
             throw new IllegalArgumentException("Unexpected parameters: " + msg);
         }
 
-        println(String.format(EQUAL_FORMAT, "size", map.size()));
+        println(String.format(EQUAL_FORMAT, "map size", map.size()));
         map.entrySet().stream()
                 .map(entry -> new Object[]{entry.getKey(), entry.getValue()})
                 .map(args -> String.format(format, args))
@@ -84,7 +84,7 @@ public class Debugger {
             throw new IllegalArgumentException("Unexpected parameters: " + msg);
         }
 
-        println(String.format(EQUAL_FORMAT, "size", list.size()));
+        println(String.format(EQUAL_FORMAT, "list size", list.size()));
         list.stream()
                 .map(elem -> new Object[]{list.indexOf(elem), elem})
                 .map(args -> String.format(format, args))
