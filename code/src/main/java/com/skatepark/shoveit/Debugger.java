@@ -10,9 +10,11 @@ import java.util.function.Predicate;
 
 public class Debugger {
 
-    private static final String DEFAULT_FORMAT = "%s : %s";
+    private static final String COLON_FORMAT = "%s : %s";
 
-    private static final String SIZE_FORMAT = "size = %d";
+    private static final String EQUAL_FORMAT = "%s = %s";
+
+    private static final String ARROW_FORMAT = "%s -> %s";
 
     private static final String LINE_SEPARATOR = System.getProperty("line.separator");
 
@@ -30,7 +32,7 @@ public class Debugger {
     }
 
     public Debugger printTypes(Class clazz) {
-        return printTypes(DEFAULT_FORMAT, clazz);
+        return printTypes(COLON_FORMAT, clazz);
     }
 
     public Debugger printTypes(String format, Class clazz) {
@@ -38,7 +40,7 @@ public class Debugger {
     }
 
     public Debugger printValues(Object object) {
-        return printValues(DEFAULT_FORMAT, object);
+        return printValues(EQUAL_FORMAT, object);
     }
 
     public Debugger printValues(String format, Object object) {
@@ -46,16 +48,15 @@ public class Debugger {
     }
 
     public Debugger printNullValues(Object object) {
-        return printNullValues(DEFAULT_FORMAT, object);
+        return printNullValues(EQUAL_FORMAT, object);
     }
-
 
     public Debugger printNullValues(String format, Object object) {
         return printValues(format, object, field -> getValue(field, object) == null);
     }
 
     public Debugger printMap(Map<?, ?> map) {
-        return printMap(DEFAULT_FORMAT, map);
+        return printMap(ARROW_FORMAT, map);
     }
 
     public Debugger printMap(String format, Map<?, ?> map) {
@@ -64,7 +65,7 @@ public class Debugger {
             throw new IllegalArgumentException("Unexpected parameters: " + msg);
         }
 
-        println(String.format(SIZE_FORMAT, map.size()));
+        println(String.format(EQUAL_FORMAT, "size", map.size()));
         map.entrySet().stream()
                 .map(entry -> new Object[]{entry.getKey(), entry.getValue()})
                 .map(args -> String.format(format, args))
@@ -74,7 +75,7 @@ public class Debugger {
     }
 
     public Debugger printList(List<?> list) {
-        return printList(DEFAULT_FORMAT, list);
+        return printList(ARROW_FORMAT, list);
     }
 
     public Debugger printList(String format, List<?> list) {
@@ -83,7 +84,7 @@ public class Debugger {
             throw new IllegalArgumentException("Unexpected parameters: " + msg);
         }
 
-        println(String.format(SIZE_FORMAT, list.size()));
+        println(String.format(EQUAL_FORMAT, "size", list.size()));
         list.stream()
                 .map(elem -> new Object[]{list.indexOf(elem), elem})
                 .map(args -> String.format(format, args))
@@ -93,8 +94,7 @@ public class Debugger {
     }
 
     public Debugger println(String value) {
-        print(value);
-        return ln();
+        return print(value).ln();
     }
 
     public Debugger ln() {
