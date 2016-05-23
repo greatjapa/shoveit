@@ -27,23 +27,25 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Debugger.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Debugger.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/code/src/main/java/com/skatepark/shoveit/Debugger.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1279">
-              <caret line="86" column="50" selection-start-line="86" selection-start-column="50" selection-end-line="86" selection-end-column="50" />
+            <state relative-caret-position="-35">
+              <caret line="296" column="0" selection-start-line="296" selection-start-column="0" selection-end-line="296" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#5921#5922#0" expanded="true" />
+                <element signature="e#5973#5974#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DebuggerTest.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="DebuggerTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/code/src/test/java/com/skatepark/shoveit/DebuggerTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-341">
-              <caret line="187" column="47" selection-start-line="187" selection-start-column="47" selection-end-line="187" selection-end-column="47" />
+            <state relative-caret-position="217">
+              <caret line="212" column="64" selection-start-line="212" selection-start-column="64" selection-end-line="212" selection-end-column="64" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -91,8 +93,8 @@
         <option value="$PROJECT_DIR$/code/src/test/java/com/skatepark/shoveit/ToolBoxTest.java" />
         <option value="$PROJECT_DIR$/code/src/main/java/com/skatepark/shoveit/ToolBox.java" />
         <option value="$PROJECT_DIR$/code/src/main/java/com/skatepark/shoveit/field/FieldTS.java" />
-        <option value="$PROJECT_DIR$/code/src/main/java/com/skatepark/shoveit/Debugger.java" />
         <option value="$PROJECT_DIR$/code/src/test/java/com/skatepark/shoveit/DebuggerTest.java" />
+        <option value="$PROJECT_DIR$/code/src/main/java/com/skatepark/shoveit/Debugger.java" />
       </list>
     </option>
   </component>
@@ -148,90 +150,11 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="shoveit" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="shoveit" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="shoveit" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="shoveit" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="shoveit" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="code" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="shoveit" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="shoveit" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="code" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="shoveit" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="shoveit" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="code" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="shoveit" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
       <pane id="PackagesPane" />
       <pane id="Scratches" />
+      <pane id="ProjectPane">
+        <subPane />
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -317,7 +240,7 @@
       <patterns />
       <method />
     </configuration>
-    <configuration default="false" name="DebuggerTest.testPrintListWithCustomFormat" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="DebuggerTest.testPrintList" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
           <option name="PATTERN" value="com.skatepark.shoveit.*" />
@@ -329,7 +252,7 @@
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="com.skatepark.shoveit" />
       <option name="MAIN_CLASS_NAME" value="com.skatepark.shoveit.DebuggerTest" />
-      <option name="METHOD_NAME" value="testPrintListWithCustomFormat" />
+      <option name="METHOD_NAME" value="testPrintList" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -343,7 +266,7 @@
       <patterns />
       <method />
     </configuration>
-    <configuration default="false" name="DebuggerTest.testPrintTypesWithCustomFormat" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="DebuggerTest.testPrintTypesWithCustomFormatAndChangingOrder" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
           <option name="PATTERN" value="com.skatepark.shoveit.*" />
@@ -355,7 +278,7 @@
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="com.skatepark.shoveit" />
       <option name="MAIN_CLASS_NAME" value="com.skatepark.shoveit.DebuggerTest" />
-      <option name="METHOD_NAME" value="testPrintTypesWithCustomFormat" />
+      <option name="METHOD_NAME" value="testPrintTypesWithCustomFormatAndChangingOrder" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -369,7 +292,7 @@
       <patterns />
       <method />
     </configuration>
-    <configuration default="false" name="DebuggerTest.testPrintValuesWithCustomFormat" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="DebuggerTest.testPrintNullValuesWithCustomFormat" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
           <option name="PATTERN" value="com.skatepark.shoveit.*" />
@@ -381,7 +304,7 @@
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="com.skatepark.shoveit" />
       <option name="MAIN_CLASS_NAME" value="com.skatepark.shoveit.DebuggerTest" />
-      <option name="METHOD_NAME" value="testPrintValuesWithCustomFormat" />
+      <option name="METHOD_NAME" value="testPrintNullValuesWithCustomFormat" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -834,16 +757,16 @@
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="JUnit.DebuggerTest" />
       <item index="1" class="java.lang.String" itemvalue="JUnit.DebuggerTest.testPrint" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.DebuggerTest.testPrintListWithCustomFormat" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.DebuggerTest.testPrintTypesWithCustomFormat" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.DebuggerTest.testPrintValuesWithCustomFormat" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.DebuggerTest.testPrintList" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.DebuggerTest.testPrintTypesWithCustomFormatAndChangingOrder" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.DebuggerTest.testPrintNullValuesWithCustomFormat" />
     </list>
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="JUnit.DebuggerTest" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.DebuggerTest.testPrintValuesWithCustomFormat" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.DebuggerTest.testPrintTypesWithCustomFormat" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.DebuggerTest.testPrintListWithCustomFormat" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.DebuggerTest.testPrintNullValuesWithCustomFormat" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.DebuggerTest.testPrintTypesWithCustomFormatAndChangingOrder" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.DebuggerTest.testPrintList" />
         <item index="4" class="java.lang.String" itemvalue="JUnit.DebuggerTest.testPrint" />
       </list>
     </recent_temporary>
@@ -868,43 +791,44 @@
       <workItem from="1463931402670" duration="1707000" />
       <workItem from="1463964592076" duration="778000" />
       <workItem from="1463971314906" duration="2871000" />
+      <workItem from="1464043457153" duration="2345000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="DebuggerTest - 2016.05.23 at 00h 16m 23s.xml">
+    <history-entry file="DebuggerTest - 2016.05.23 at 20h 06m 28s.xml">
       <configuration name="DebuggerTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="DebuggerTest - 2016.05.23 at 00h 22m 00s.xml">
+    <history-entry file="DebuggerTest - 2016.05.23 at 20h 09m 16s.xml">
       <configuration name="DebuggerTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="DebuggerTest - 2016.05.23 at 00h 26m 24s.xml">
+    <history-entry file="DebuggerTest - 2016.05.23 at 20h 09m 49s.xml">
       <configuration name="DebuggerTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="DebuggerTest - 2016.05.23 at 00h 28m 57s.xml">
+    <history-entry file="DebuggerTest - 2016.05.23 at 20h 10m 28s.xml">
       <configuration name="DebuggerTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="DebuggerTest_testPrint - 2016.05.23 at 00h 21m 54s.xml">
-      <configuration name="DebuggerTest.testPrint" configurationId="JUnit" />
+    <history-entry file="DebuggerTest - 2016.05.23 at 20h 11m 21s.xml">
+      <configuration name="DebuggerTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="DebuggerTest_testPrintListWithCustomFormat - 2016.05.23 at 00h 25m 33s.xml">
-      <configuration name="DebuggerTest.testPrintListWithCustomFormat" configurationId="JUnit" />
+    <history-entry file="DebuggerTest - 2016.05.23 at 20h 11m 36s.xml">
+      <configuration name="DebuggerTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="DebuggerTest_testPrintNullValues - 2016.05.23 at 00h 16m 16s.xml">
-      <configuration name="DebuggerTest.testPrintNullValues" configurationId="JUnit" />
+    <history-entry file="DebuggerTest - 2016.05.23 at 20h 12m 58s.xml">
+      <configuration name="DebuggerTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="DebuggerTest_testPrintTypesWithCustomFormat - 2016.05.23 at 00h 27m 37s.xml">
-      <configuration name="DebuggerTest.testPrintTypesWithCustomFormat" configurationId="JUnit" />
+    <history-entry file="DebuggerTest - 2016.05.23 at 20h 22m 32s.xml">
+      <configuration name="DebuggerTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="DebuggerTest_testPrintValues - 2016.05.23 at 00h 15m 41s.xml">
-      <configuration name="DebuggerTest.testPrintValues" configurationId="JUnit" />
+    <history-entry file="DebuggerTest_testPrintNullValuesWithCustomFormat - 2016.05.23 at 20h 22m 29s.xml">
+      <configuration name="DebuggerTest.testPrintNullValuesWithCustomFormat" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="DebuggerTest_testPrintValuesWithCustomFormat - 2016.05.23 at 00h 28m 19s.xml">
-      <configuration name="DebuggerTest.testPrintValuesWithCustomFormat" configurationId="JUnit" />
+    <history-entry file="DebuggerTest_testPrintTypesWithCustomFormatAndChangingOrder - 2016.05.23 at 20h 09m 12s.xml">
+      <configuration name="DebuggerTest.testPrintTypesWithCustomFormatAndChangingOrder" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="19712000" />
+    <option name="totallyTimeSpent" value="22057000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -931,7 +855,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2774524" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2774524" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -945,6 +869,33 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
+    <layout-to-restore>
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32928678" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39872408" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3283582" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32854864" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3283582" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.6188198" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2774524" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+    </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
     <option name="RECENTLY_FILTERED_USER_GROUPS">
@@ -968,7 +919,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$USER_HOME$/jdk1.8.0_73/src.zip!/java/util/function/Function.java" />
     <entry file="file://$PROJECT_DIR$/code/src/test/java/com/skatepark/shoveit/pojo/Person.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
@@ -1157,10 +1107,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="87">
           <caret line="148" column="29" selection-start-line="148" selection-start-column="29" selection-end-line="148" selection-end-column="29" />
-          <folding>
-            <element signature="e#4114#4115#0" expanded="true" />
-            <element signature="e#4150#4151#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1175,20 +1122,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/code/src/test/java/com/skatepark/shoveit/DebuggerTest.java">
+    <entry file="jar:///usr/lib/jvm/java-1.8.0/jre/lib/rt.jar!/java/text/MessageFormat.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-341">
-          <caret line="187" column="47" selection-start-line="187" selection-start-column="47" selection-end-line="187" selection-end-column="47" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="198">
+          <caret line="276" column="30" selection-start-line="276" selection-start-column="30" selection-end-line="276" selection-end-column="30" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/code/src/main/java/com/skatepark/shoveit/Debugger.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1279">
-          <caret line="86" column="50" selection-start-line="86" selection-start-column="50" selection-end-line="86" selection-end-column="50" />
+        <state relative-caret-position="-35">
+          <caret line="296" column="0" selection-start-line="296" selection-start-column="0" selection-end-line="296" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#5921#5922#0" expanded="true" />
+            <element signature="e#5973#5974#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/src/test/java/com/skatepark/shoveit/DebuggerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="212" column="64" selection-start-line="212" selection-start-column="64" selection-end-line="212" selection-end-column="64" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

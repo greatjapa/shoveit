@@ -7,11 +7,8 @@ import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Properties;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -52,7 +49,7 @@ public class DebuggerTest {
                 .collect(Collectors.toCollection(ArrayList::new));
 
         ByteArrayOutputStream out = new ByteArrayOutputStream();
-        new Debugger(out).printList("[%s] = %s", list);
+        new Debugger(out).printList("[{0}] = {1}", list);
         String result = new String(out.toByteArray());
 
         StringBuilder expected = new StringBuilder();
@@ -104,7 +101,7 @@ public class DebuggerTest {
                 .collect(Collectors.toMap(Integer::intValue, i -> "value" + i));
 
         ByteArrayOutputStream out = new ByteArrayOutputStream();
-        new Debugger(out).printMap("%s has %s", map);
+        new Debugger(out).printMap("{0} has {1}", map);
         String result = new String(out.toByteArray());
 
         StringBuilder expected = new StringBuilder();
@@ -130,9 +127,9 @@ public class DebuggerTest {
         String result = new String(out.toByteArray());
 
         StringBuilder expected = new StringBuilder();
-        expected.append("name : String").append(LINE_SEPARATOR);
-        expected.append("age : int").append(LINE_SEPARATOR);
-        expected.append("friends : List").append(LINE_SEPARATOR);
+        expected.append("String name").append(LINE_SEPARATOR);
+        expected.append("int age").append(LINE_SEPARATOR);
+        expected.append("List friends").append(LINE_SEPARATOR);
 
         Assert.assertEquals(expected.toString(), result);
     }
@@ -140,13 +137,13 @@ public class DebuggerTest {
     @Test
     public void testPrintTypesWithCustomFormat() {
         ByteArrayOutputStream out = new ByteArrayOutputStream();
-        new Debugger(out).printTypes("%s has type %s", Person.class);
+        new Debugger(out).printTypes("{1} : {0}", Person.class);
         String result = new String(out.toByteArray());
 
         StringBuilder expected = new StringBuilder();
-        expected.append("name has type String").append(LINE_SEPARATOR);
-        expected.append("age has type int").append(LINE_SEPARATOR);
-        expected.append("friends has type List").append(LINE_SEPARATOR);
+        expected.append("name : String").append(LINE_SEPARATOR);
+        expected.append("age : int").append(LINE_SEPARATOR);
+        expected.append("friends : List").append(LINE_SEPARATOR);
 
         Assert.assertEquals(expected.toString(), result);
     }
@@ -172,7 +169,7 @@ public class DebuggerTest {
         Person person = new Person("Bane", 40);
 
         ByteArrayOutputStream out = new ByteArrayOutputStream();
-        new Debugger(out).printValues("%s <- %s", person);
+        new Debugger(out).printValues("{0} <- {1}", person);
         String result = new String(out.toByteArray());
 
         StringBuilder expected = new StringBuilder();
@@ -202,11 +199,11 @@ public class DebuggerTest {
         Person person = new Person("Bane", 40);
 
         ByteArrayOutputStream out = new ByteArrayOutputStream();
-        new Debugger(out).printNullValues("%s <- %s", person);
+        new Debugger(out).printNullValues("{0} is {1}", person);
         String result = new String(out.toByteArray());
 
         StringBuilder expected = new StringBuilder();
-        expected.append("friends <- null").append(LINE_SEPARATOR);
+        expected.append("friends is null").append(LINE_SEPARATOR);
 
         Assert.assertEquals(expected.toString(), result);
     }
