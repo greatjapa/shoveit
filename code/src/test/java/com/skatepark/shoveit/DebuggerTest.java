@@ -1,6 +1,5 @@
 package com.skatepark.shoveit;
 
-import com.skatepark.shoveit.pojo.OldPerson;
 import com.skatepark.shoveit.pojo.Person;
 
 import org.junit.Assert;
@@ -129,6 +128,7 @@ public class DebuggerTest {
 
         StringBuilder expected = new StringBuilder();
         expected.append("String name").append(LINE_SEPARATOR);
+        expected.append("String lastName").append(LINE_SEPARATOR);
         expected.append("int age").append(LINE_SEPARATOR);
         expected.append("List friends").append(LINE_SEPARATOR);
 
@@ -143,6 +143,7 @@ public class DebuggerTest {
 
         StringBuilder expected = new StringBuilder();
         expected.append("name : String").append(LINE_SEPARATOR);
+        expected.append("lastName : String").append(LINE_SEPARATOR);
         expected.append("age : int").append(LINE_SEPARATOR);
         expected.append("friends : List").append(LINE_SEPARATOR);
 
@@ -151,14 +152,15 @@ public class DebuggerTest {
 
     @Test
     public void testPrintValues() {
-        Person person = new Person("Bane", 40);
+        Person person = new Person("Will", "Smith", 40);
 
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         new Debugger(out).printValues(person);
         String result = new String(out.toByteArray());
 
         StringBuilder expected = new StringBuilder();
-        expected.append("name = Bane").append(LINE_SEPARATOR);
+        expected.append("name = Will").append(LINE_SEPARATOR);
+        expected.append("lastName = Smith").append(LINE_SEPARATOR);
         expected.append("age = 40").append(LINE_SEPARATOR);
         expected.append("friends = null").append(LINE_SEPARATOR);
 
@@ -167,14 +169,15 @@ public class DebuggerTest {
 
     @Test
     public void testPrintValuesWithCustomFormat() {
-        Person person = new Person("Bane", 40);
+        Person person = new Person("Will", "Smith", 40);
 
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         new Debugger(out).printValues("{0} <- {1}", person);
         String result = new String(out.toByteArray());
 
         StringBuilder expected = new StringBuilder();
-        expected.append("name <- Bane").append(LINE_SEPARATOR);
+        expected.append("name <- Will").append(LINE_SEPARATOR);
+        expected.append("lastName <- Smith").append(LINE_SEPARATOR);
         expected.append("age <- 40").append(LINE_SEPARATOR);
         expected.append("friends <- null").append(LINE_SEPARATOR);
 
@@ -183,7 +186,7 @@ public class DebuggerTest {
 
     @Test
     public void testPrintNullValues() {
-        Person person = new Person("Bane", 40);
+        Person person = new Person("Will", "Smith", 40);
 
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         new Debugger(out).printNullValues(person);
@@ -197,7 +200,7 @@ public class DebuggerTest {
 
     @Test
     public void testPrintNullValuesWithCustomFormat() {
-        Person person = new Person("Bane", 40);
+        Person person = new Person("Will", "Smith", 40);
 
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         new Debugger(out).printNullValues("{0} is {1}", person);
@@ -211,30 +214,32 @@ public class DebuggerTest {
 
     @Test
     public void testPrintSerializableValues() {
-        OldPerson person = new OldPerson("Vicent", "van", "Gogh");
+        Person person = new Person("Will", "Smith", 40);
 
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         new Debugger(out).printSerializableValues(person);
         String result = new String(out.toByteArray());
 
         StringBuilder expected = new StringBuilder();
-        expected.append("name = Vicent").append(LINE_SEPARATOR);
-        expected.append("lastName = Gogh").append(LINE_SEPARATOR);
+        expected.append("name = Will").append(LINE_SEPARATOR);
+        expected.append("age = 40").append(LINE_SEPARATOR);
+        expected.append("friends = null").append(LINE_SEPARATOR);
 
         Assert.assertEquals(expected.toString(), result);
     }
 
     @Test
     public void testPrintSerializableValuesWithCustomFormat() {
-        OldPerson person = new OldPerson("Vicent", "van", "Gogh");
+        Person person = new Person("Will", "Smith", 40);
 
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         new Debugger(out).printSerializableValues("{0} is {1}", person);
         String result = new String(out.toByteArray());
 
         StringBuilder expected = new StringBuilder();
-        expected.append("name is Vicent").append(LINE_SEPARATOR);
-        expected.append("lastName is Gogh").append(LINE_SEPARATOR);
+        expected.append("name is Will").append(LINE_SEPARATOR);
+        expected.append("age is 40").append(LINE_SEPARATOR);
+        expected.append("friends is null").append(LINE_SEPARATOR);
 
         Assert.assertEquals(expected.toString(), result);
     }
