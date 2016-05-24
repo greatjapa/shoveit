@@ -3,6 +3,7 @@ package com.skatepark.shoveit;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
 import java.text.MessageFormat;
 import java.util.Arrays;
 import java.util.List;
@@ -131,6 +132,35 @@ public class Debugger {
      */
     public Debugger printNullValues(String format, Object object) {
         return printValues(format, object, field -> getValue(field, object) == null);
+    }
+
+    /**
+     * Print all serializable field values.
+     *
+     * NOTE: All formats should be in {@link MessageFormat#format(String, Object...)} syntax.
+     *
+     * Ex: <code>"{0} {1}"</code>, <code>"{1} : {0}"</code>, <code>"{0} -> {1}"</code>, etc
+     *
+     * @param object object inspected
+     * @return Debugger used for chaining.
+     */
+    public Debugger printSerializableValues(Object object) {
+        return printSerializableValues(EQUAL_FORMAT, object);
+    }
+
+    /**
+     * Print all serializable field values with the given format.
+     *
+     * NOTE: All formats should be in {@link MessageFormat#format(String, Object...)} syntax.
+     *
+     * Ex: <code>"{0} {1}"</code>, <code>"{1} : {0}"</code>, <code>"{0} -> {1}"</code>, etc
+     *
+     * @param format custom format
+     * @param object object inspected
+     * @return Debugger used for chaining.
+     */
+    public Debugger printSerializableValues(String format, Object object) {
+        return printValues(format, object, field -> !Modifier.isTransient(field.getModifiers()));
     }
 
     /**

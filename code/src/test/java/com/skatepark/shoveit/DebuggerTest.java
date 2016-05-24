@@ -1,5 +1,6 @@
 package com.skatepark.shoveit;
 
+import com.skatepark.shoveit.pojo.OldPerson;
 import com.skatepark.shoveit.pojo.Person;
 
 import org.junit.Assert;
@@ -204,6 +205,36 @@ public class DebuggerTest {
 
         StringBuilder expected = new StringBuilder();
         expected.append("friends is null").append(LINE_SEPARATOR);
+
+        Assert.assertEquals(expected.toString(), result);
+    }
+
+    @Test
+    public void testPrintSerializableValues() {
+        OldPerson person = new OldPerson("Vicent", "van", "Gogh");
+
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        new Debugger(out).printSerializableValues(person);
+        String result = new String(out.toByteArray());
+
+        StringBuilder expected = new StringBuilder();
+        expected.append("name = Vicent").append(LINE_SEPARATOR);
+        expected.append("lastName = Gogh").append(LINE_SEPARATOR);
+
+        Assert.assertEquals(expected.toString(), result);
+    }
+
+    @Test
+    public void testPrintSerializableValuesWithCustomFormat() {
+        OldPerson person = new OldPerson("Vicent", "van", "Gogh");
+
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        new Debugger(out).printSerializableValues("{0} is {1}", person);
+        String result = new String(out.toByteArray());
+
+        StringBuilder expected = new StringBuilder();
+        expected.append("name is Vicent").append(LINE_SEPARATOR);
+        expected.append("lastName is Gogh").append(LINE_SEPARATOR);
 
         Assert.assertEquals(expected.toString(), result);
     }

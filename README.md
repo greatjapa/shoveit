@@ -4,7 +4,7 @@ A Yet Another Personal Debugger.
 
 #### Examples
 
-Print all field types:
+Print field types:
 
 ```Java
 new Debugger().printTypes(Person.class);
@@ -14,7 +14,7 @@ new Debugger().printTypes(Person.class);
 // List friends
 ```
 
-Print all field types with custom format:
+Print field types with custom format:
 
 ```Java
 new Debugger().printTypes("{1} : {0}", Person.class);
@@ -24,7 +24,7 @@ new Debugger().printTypes("{1} : {0}", Person.class);
 // friends : List 
 ```
 
-Print all field values:
+Print values:
 
 ```Java
 Person person = new Person("Bane", 40);
@@ -36,7 +36,7 @@ new Debugger().printValues(person);
 // friends : null
 ```
 
-Print all field values with custom format:
+Print values with custom format:
 
 ```Java
 Person person = new Person("Bane", 40);
@@ -48,7 +48,7 @@ new Debugger().printValues("{0} is {1}", person);
 // friends is null
 ```
 
-Print all null field values:
+Print null values:
 
 ```Java
 Person person = new Person("Bane", 40);
@@ -56,6 +56,17 @@ Person person = new Person("Bane", 40);
 new Debugger().printNullValues(person);
 
 // friends : null
+```
+
+Print serializable field values:
+
+```Java
+OldPerson person = new OldPerson("Vicent", "van", "Gogh"); //middleName is transient
+
+new Debugger().printSerializableValues(person);
+
+// name : Vicent
+// lastName : Gogh
 ```
 
 Print map:
