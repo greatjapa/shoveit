@@ -10,6 +10,7 @@ Print field types:
 new Debugger().printTypes(Person.class);
 
 // String name
+// String lastName
 // int age
 // List friends
 ```
@@ -20,6 +21,7 @@ Print field types with custom format:
 new Debugger().printTypes("{1} : {0}", Person.class);
 
 // name : String 
+// lastName : String
 // age : int 
 // friends : List 
 ```
@@ -27,11 +29,12 @@ new Debugger().printTypes("{1} : {0}", Person.class);
 Print values:
 
 ```Java
-Person person = new Person("Bane", 40);
+Person person = new Person("Will", "Smith", 40);
 
 new Debugger().printValues(person);
 
-// name : Bane
+// name : Will
+// lastName : Smith
 // age : 40
 // friends : null
 ```
@@ -39,11 +42,12 @@ new Debugger().printValues(person);
 Print values with custom format:
 
 ```Java
-Person person = new Person("Bane", 40);
+Person person = new Person("Will", "Smith", 40);
 
 new Debugger().printValues("{0} is {1}", person);
 
-// name is Bane
+// name is Will
+// lastName is Smith
 // age is 40
 // friends is null
 ```
@@ -51,7 +55,7 @@ new Debugger().printValues("{0} is {1}", person);
 Print null values:
 
 ```Java
-Person person = new Person("Bane", 40);
+Person person = new Person("Will", "Smith", 40);
 
 new Debugger().printNullValues(person);
 
@@ -61,12 +65,13 @@ new Debugger().printNullValues(person);
 Print serializable field values:
 
 ```Java
-OldPerson person = new OldPerson("Vicent", "van", "Gogh"); //middleName is transient
+Person person = new Person("Will", "Smith", 40); //lastName is transient
 
 new Debugger().printSerializableValues(person);
 
-// name : Vicent
-// lastName : Gogh
+// name : Will
+// age : 40
+// friends : null
 ```
 
 Print map:
@@ -121,17 +126,16 @@ Print Strings and chaining:
 
 ```Java
 new Debugger()
-       .println("{")
-       .println("\"type\": \"Person\"")
-       .printValues("\"{0}\" : \"{1}\"", new Person("Bane", 40))
-       .println("}");
+       .println("-- Person values --")
+       .printValues("\"{0}\" : \"{1}\"", new Person("Will", "Smith", 40))
+       .println("------ end --------");
 
-// {
-// "type": "Person"
-// "name" : "Bane"
+// -- Person values --
+// "name" : "Will"
+// "lastName" : "Smith"
 // "age" : "40"
 // "friends" : "null"
-// }
+// ------ end --------
 ```
 
 ## License
