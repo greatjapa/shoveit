@@ -274,7 +274,6 @@ public class Debugger {
 
         delimiter = Objects.toString(delimiter, LINE_SEPARATOR);
 
-        println(MessageFormat.format(EQUAL_FORMAT, "#size", map.size()));
         return print(map.entrySet().stream()
                 .map(entry -> new Object[]{entry.getKey(), entry.getValue()})
                 .map(args -> MessageFormat.format(format, args))
@@ -307,16 +306,7 @@ public class Debugger {
      * @return Debugger used for chaining.
      */
     public <T> Debugger printList(List<T> list, String format) {
-        Objects.requireNonNull(list, "list must not be null");
-        Objects.requireNonNull(format, "format must not be null");
-
-        println(MessageFormat.format(EQUAL_FORMAT, "#size", list.size()));
-        list.stream()
-                .map(elem -> new Object[]{list.indexOf(elem), elem})
-                .map(args -> MessageFormat.format(format, args))
-                .map(line -> line.concat(LINE_SEPARATOR))
-                .forEach(this::print);
-        return this;
+        return printList(list, format, LINE_SEPARATOR);
     }
 
     /**
@@ -337,7 +327,6 @@ public class Debugger {
 
         delimiter = Objects.toString(delimiter, LINE_SEPARATOR);
 
-        println(MessageFormat.format(EQUAL_FORMAT, "#size", list.size()));
         return print(list.stream()
                 .map(elem -> new Object[]{list.indexOf(elem), elem})
                 .map(args -> MessageFormat.format(format, args))
@@ -416,15 +405,7 @@ public class Debugger {
      * @return Debugger used for chaining.
      */
     public <T> Debugger printSet(Set<T> set, String format) {
-        Objects.requireNonNull(set, "set must not be null");
-        Objects.requireNonNull(format, "format must not be null");
-
-        println(MessageFormat.format(EQUAL_FORMAT, "#size", set.size()));
-        set.stream()
-                .map(elem -> MessageFormat.format(format, elem))
-                .map(line -> line.concat(LINE_SEPARATOR))
-                .forEach(this::print);
-        return this;
+       return printSet(set, format, LINE_SEPARATOR);
     }
 
     /**
@@ -445,7 +426,6 @@ public class Debugger {
 
         delimiter = Objects.toString(delimiter, LINE_SEPARATOR);
 
-        println(MessageFormat.format(EQUAL_FORMAT, "#size", set.size()));
         return print(set.stream()
                 .map(elem -> MessageFormat.format(format, elem))
                 .collect(Collectors.joining(delimiter)));
