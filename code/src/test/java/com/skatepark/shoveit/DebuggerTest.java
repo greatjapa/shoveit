@@ -51,7 +51,7 @@ public class DebuggerTest {
                 .collect(Collectors.toList());
 
         ByteArrayOutputStream out = new ByteArrayOutputStream();
-        new Debugger(out).printList("[{0}] = {1}", list);
+        new Debugger(out).printList(list, "[{0}] = {1}");
         String result = new String(out.toByteArray());
 
         StringBuilder expected = new StringBuilder();
@@ -91,7 +91,7 @@ public class DebuggerTest {
         expected.append("6 -> value6").append(LINE_SEPARATOR);
         expected.append("7 -> value7").append(LINE_SEPARATOR);
         expected.append("8 -> value8").append(LINE_SEPARATOR);
-        expected.append("9 -> value9").append(LINE_SEPARATOR);
+        expected.append("9 -> value9");
 
         Assert.assertEquals(expected.toString(), result);
     }
@@ -103,7 +103,7 @@ public class DebuggerTest {
                 .toArray();
 
         ByteArrayOutputStream out = new ByteArrayOutputStream();
-        new Debugger(out).printArray("[{0}] = {1}", array);
+        new Debugger(out).printArray(array, "[{0}] = {1}");
         String result = new String(out.toByteArray());
 
         StringBuilder expected = new StringBuilder();
@@ -117,7 +117,7 @@ public class DebuggerTest {
         expected.append("[6] = value6").append(LINE_SEPARATOR);
         expected.append("[7] = value7").append(LINE_SEPARATOR);
         expected.append("[8] = value8").append(LINE_SEPARATOR);
-        expected.append("[9] = value9").append(LINE_SEPARATOR);
+        expected.append("[9] = value9");
 
         Assert.assertEquals(expected.toString(), result);
     }
@@ -143,7 +143,7 @@ public class DebuggerTest {
         expected.append("6 -> value6").append(LINE_SEPARATOR);
         expected.append("7 -> value7").append(LINE_SEPARATOR);
         expected.append("8 -> value8").append(LINE_SEPARATOR);
-        expected.append("9 -> value9").append(LINE_SEPARATOR);
+        expected.append("9 -> value9");
 
         Assert.assertEquals(expected.toString(), result);
     }
@@ -155,7 +155,7 @@ public class DebuggerTest {
                 .collect(Collectors.toMap(Integer::intValue, i -> "value" + i));
 
         ByteArrayOutputStream out = new ByteArrayOutputStream();
-        new Debugger(out).printMap("{0} has {1}", map);
+        new Debugger(out).printMap(map, "{0} has {1}");
         String result = new String(out.toByteArray());
 
         StringBuilder expected = new StringBuilder();
@@ -169,7 +169,7 @@ public class DebuggerTest {
         expected.append("6 has value6").append(LINE_SEPARATOR);
         expected.append("7 has value7").append(LINE_SEPARATOR);
         expected.append("8 has value8").append(LINE_SEPARATOR);
-        expected.append("9 has value9").append(LINE_SEPARATOR);
+        expected.append("9 has value9");
 
         Assert.assertEquals(expected.toString(), result);
     }
@@ -207,7 +207,7 @@ public class DebuggerTest {
                 .collect(Collectors.toCollection(TreeSet::new));
 
         ByteArrayOutputStream out = new ByteArrayOutputStream();
-        new Debugger(out).printSet("~{0}",set);
+        new Debugger(out).printSet(set, "~{0}");
         String result = new String(out.toByteArray());
 
         StringBuilder expected = new StringBuilder();
@@ -236,7 +236,7 @@ public class DebuggerTest {
         expected.append("String name").append(LINE_SEPARATOR);
         expected.append("String lastName").append(LINE_SEPARATOR);
         expected.append("int age").append(LINE_SEPARATOR);
-        expected.append("List friends").append(LINE_SEPARATOR);
+        expected.append("List friends");
 
         Assert.assertEquals(expected.toString(), result);
     }
@@ -244,14 +244,14 @@ public class DebuggerTest {
     @Test
     public void testPrintTypesWithCustomFormat() {
         ByteArrayOutputStream out = new ByteArrayOutputStream();
-        new Debugger(out).printTypes("{1} : {0}", Person.class);
+        new Debugger(out).printTypes(Person.class, "{1} : {0}");
         String result = new String(out.toByteArray());
 
         StringBuilder expected = new StringBuilder();
         expected.append("name : String").append(LINE_SEPARATOR);
         expected.append("lastName : String").append(LINE_SEPARATOR);
         expected.append("age : int").append(LINE_SEPARATOR);
-        expected.append("friends : List").append(LINE_SEPARATOR);
+        expected.append("friends : List");
 
         Assert.assertEquals(expected.toString(), result);
     }
@@ -268,7 +268,7 @@ public class DebuggerTest {
         expected.append("name = Will").append(LINE_SEPARATOR);
         expected.append("lastName = Smith").append(LINE_SEPARATOR);
         expected.append("age = 40").append(LINE_SEPARATOR);
-        expected.append("friends = null").append(LINE_SEPARATOR);
+        expected.append("friends = null");
 
         Assert.assertEquals(expected.toString(), result);
     }
@@ -278,14 +278,14 @@ public class DebuggerTest {
         Person person = new Person("Will", "Smith", 40, new ArrayList<>());
 
         ByteArrayOutputStream out = new ByteArrayOutputStream();
-        new Debugger(out).printValues("{0} <- {1}", person);
+        new Debugger(out).printValues(person, "{0} <- {1}");
         String result = new String(out.toByteArray());
 
         StringBuilder expected = new StringBuilder();
         expected.append("name <- Will").append(LINE_SEPARATOR);
         expected.append("lastName <- Smith").append(LINE_SEPARATOR);
         expected.append("age <- 40").append(LINE_SEPARATOR);
-        expected.append("friends <- []").append(LINE_SEPARATOR);
+        expected.append("friends <- []");
 
         Assert.assertEquals(expected.toString(), result);
     }
@@ -298,10 +298,7 @@ public class DebuggerTest {
         new Debugger(out).printNullValues(person);
         String result = new String(out.toByteArray());
 
-        StringBuilder expected = new StringBuilder();
-        expected.append("friends = null").append(LINE_SEPARATOR);
-
-        Assert.assertEquals(expected.toString(), result);
+        Assert.assertEquals("friends = null", result);
     }
 
     @Test
@@ -309,13 +306,10 @@ public class DebuggerTest {
         Person person = new Person("Will", "Smith", 40, null);
 
         ByteArrayOutputStream out = new ByteArrayOutputStream();
-        new Debugger(out).printNullValues("{0} is {1}", person);
+        new Debugger(out).printNullValues(person, "{0} is {1}");
         String result = new String(out.toByteArray());
 
-        StringBuilder expected = new StringBuilder();
-        expected.append("friends is null").append(LINE_SEPARATOR);
-
-        Assert.assertEquals(expected.toString(), result);
+        Assert.assertEquals("friends is null", result);
     }
 
     @Test
@@ -329,7 +323,7 @@ public class DebuggerTest {
         StringBuilder expected = new StringBuilder();
         expected.append("name = Will").append(LINE_SEPARATOR);
         expected.append("age = 40").append(LINE_SEPARATOR);
-        expected.append("friends = null").append(LINE_SEPARATOR);
+        expected.append("friends = null");
 
         Assert.assertEquals(expected.toString(), result);
     }
@@ -339,13 +333,13 @@ public class DebuggerTest {
         Person person = new Person("Will", "Smith", 40, new ArrayList<>());
 
         ByteArrayOutputStream out = new ByteArrayOutputStream();
-        new Debugger(out).printSerializableValues("{0} is {1}", person);
+        new Debugger(out).printSerializableValues(person, "{0} is {1}");
         String result = new String(out.toByteArray());
 
         StringBuilder expected = new StringBuilder();
         expected.append("name is Will").append(LINE_SEPARATOR);
         expected.append("age is 40").append(LINE_SEPARATOR);
-        expected.append("friends is []").append(LINE_SEPARATOR);
+        expected.append("friends is []");
 
         Assert.assertEquals(expected.toString(), result);
     }
