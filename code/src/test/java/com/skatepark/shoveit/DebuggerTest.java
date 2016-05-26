@@ -9,6 +9,8 @@ import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+import java.util.TreeSet;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -20,14 +22,14 @@ public class DebuggerTest {
     public void testPrintList() {
         List<String> list = IntStream.range(0, 10)
                 .mapToObj(i -> "value" + i)
-                .collect(Collectors.toCollection(ArrayList::new));
+                .collect(Collectors.toList());
 
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         new Debugger(out).printList(list);
         String result = new String(out.toByteArray());
 
         StringBuilder expected = new StringBuilder();
-        expected.append("list size = 10").append(LINE_SEPARATOR);
+        expected.append("#size = 10").append(LINE_SEPARATOR);
         expected.append("0 -> value0").append(LINE_SEPARATOR);
         expected.append("1 -> value1").append(LINE_SEPARATOR);
         expected.append("2 -> value2").append(LINE_SEPARATOR);
@@ -46,14 +48,66 @@ public class DebuggerTest {
     public void testPrintListWithCustomFormat() {
         List<String> list = IntStream.range(0, 10)
                 .mapToObj(i -> "value" + i)
-                .collect(Collectors.toCollection(ArrayList::new));
+                .collect(Collectors.toList());
 
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         new Debugger(out).printList("[{0}] = {1}", list);
         String result = new String(out.toByteArray());
 
         StringBuilder expected = new StringBuilder();
-        expected.append("list size = 10").append(LINE_SEPARATOR);
+        expected.append("#size = 10").append(LINE_SEPARATOR);
+        expected.append("[0] = value0").append(LINE_SEPARATOR);
+        expected.append("[1] = value1").append(LINE_SEPARATOR);
+        expected.append("[2] = value2").append(LINE_SEPARATOR);
+        expected.append("[3] = value3").append(LINE_SEPARATOR);
+        expected.append("[4] = value4").append(LINE_SEPARATOR);
+        expected.append("[5] = value5").append(LINE_SEPARATOR);
+        expected.append("[6] = value6").append(LINE_SEPARATOR);
+        expected.append("[7] = value7").append(LINE_SEPARATOR);
+        expected.append("[8] = value8").append(LINE_SEPARATOR);
+        expected.append("[9] = value9").append(LINE_SEPARATOR);
+
+        Assert.assertEquals(expected.toString(), result);
+    }
+
+    @Test
+    public void testPrintArray() {
+        Object[] array = IntStream.range(0, 10)
+                .mapToObj(i -> "value" + i)
+                .toArray();
+
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        new Debugger(out).printArray(array);
+        String result = new String(out.toByteArray());
+
+        StringBuilder expected = new StringBuilder();
+        expected.append("#size = 10").append(LINE_SEPARATOR);
+        expected.append("0 -> value0").append(LINE_SEPARATOR);
+        expected.append("1 -> value1").append(LINE_SEPARATOR);
+        expected.append("2 -> value2").append(LINE_SEPARATOR);
+        expected.append("3 -> value3").append(LINE_SEPARATOR);
+        expected.append("4 -> value4").append(LINE_SEPARATOR);
+        expected.append("5 -> value5").append(LINE_SEPARATOR);
+        expected.append("6 -> value6").append(LINE_SEPARATOR);
+        expected.append("7 -> value7").append(LINE_SEPARATOR);
+        expected.append("8 -> value8").append(LINE_SEPARATOR);
+        expected.append("9 -> value9").append(LINE_SEPARATOR);
+
+        Assert.assertEquals(expected.toString(), result);
+    }
+
+    @Test
+    public void testPrintArrayWithCustomFormat() {
+        Object[] array = IntStream.range(0, 10)
+                .mapToObj(i -> "value" + i)
+                .toArray();
+
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        new Debugger(out).printArray("[{0}] = {1}", array);
+        String result = new String(out.toByteArray());
+
+        StringBuilder expected = new StringBuilder();
+        expected.append("#size = 10").append(LINE_SEPARATOR);
         expected.append("[0] = value0").append(LINE_SEPARATOR);
         expected.append("[1] = value1").append(LINE_SEPARATOR);
         expected.append("[2] = value2").append(LINE_SEPARATOR);
@@ -79,7 +133,7 @@ public class DebuggerTest {
         String result = new String(out.toByteArray());
 
         StringBuilder expected = new StringBuilder();
-        expected.append("map size = 10").append(LINE_SEPARATOR);
+        expected.append("#size = 10").append(LINE_SEPARATOR);
         expected.append("0 -> value0").append(LINE_SEPARATOR);
         expected.append("1 -> value1").append(LINE_SEPARATOR);
         expected.append("2 -> value2").append(LINE_SEPARATOR);
@@ -105,7 +159,7 @@ public class DebuggerTest {
         String result = new String(out.toByteArray());
 
         StringBuilder expected = new StringBuilder();
-        expected.append("map size = 10").append(LINE_SEPARATOR);
+        expected.append("#size = 10").append(LINE_SEPARATOR);
         expected.append("0 has value0").append(LINE_SEPARATOR);
         expected.append("1 has value1").append(LINE_SEPARATOR);
         expected.append("2 has value2").append(LINE_SEPARATOR);
@@ -116,6 +170,58 @@ public class DebuggerTest {
         expected.append("7 has value7").append(LINE_SEPARATOR);
         expected.append("8 has value8").append(LINE_SEPARATOR);
         expected.append("9 has value9").append(LINE_SEPARATOR);
+
+        Assert.assertEquals(expected.toString(), result);
+    }
+
+    @Test
+    public void testPrintSet() {
+        Set<String> set = IntStream.range(0, 10)
+                .mapToObj(i -> "value" + i)
+                .collect(Collectors.toCollection(TreeSet::new));
+
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        new Debugger(out).printSet(set);
+        String result = new String(out.toByteArray());
+
+        StringBuilder expected = new StringBuilder();
+        expected.append("#size = 10").append(LINE_SEPARATOR);
+        expected.append("value0").append(LINE_SEPARATOR);
+        expected.append("value1").append(LINE_SEPARATOR);
+        expected.append("value2").append(LINE_SEPARATOR);
+        expected.append("value3").append(LINE_SEPARATOR);
+        expected.append("value4").append(LINE_SEPARATOR);
+        expected.append("value5").append(LINE_SEPARATOR);
+        expected.append("value6").append(LINE_SEPARATOR);
+        expected.append("value7").append(LINE_SEPARATOR);
+        expected.append("value8").append(LINE_SEPARATOR);
+        expected.append("value9").append(LINE_SEPARATOR);
+
+        Assert.assertEquals(expected.toString(), result);
+    }
+
+    @Test
+    public void testPrintSetWithCustomFormat() {
+        Set<String> set = IntStream.range(0, 10)
+                .mapToObj(i -> "value" + i)
+                .collect(Collectors.toCollection(TreeSet::new));
+
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        new Debugger(out).printSet("~{0}",set);
+        String result = new String(out.toByteArray());
+
+        StringBuilder expected = new StringBuilder();
+        expected.append("#size = 10").append(LINE_SEPARATOR);
+        expected.append("~value0").append(LINE_SEPARATOR);
+        expected.append("~value1").append(LINE_SEPARATOR);
+        expected.append("~value2").append(LINE_SEPARATOR);
+        expected.append("~value3").append(LINE_SEPARATOR);
+        expected.append("~value4").append(LINE_SEPARATOR);
+        expected.append("~value5").append(LINE_SEPARATOR);
+        expected.append("~value6").append(LINE_SEPARATOR);
+        expected.append("~value7").append(LINE_SEPARATOR);
+        expected.append("~value8").append(LINE_SEPARATOR);
+        expected.append("~value9").append(LINE_SEPARATOR);
 
         Assert.assertEquals(expected.toString(), result);
     }
@@ -152,7 +258,7 @@ public class DebuggerTest {
 
     @Test
     public void testPrintValues() {
-        Person person = new Person("Will", "Smith", 40);
+        Person person = new Person("Will", "Smith", 40, null);
 
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         new Debugger(out).printValues(person);
@@ -169,7 +275,7 @@ public class DebuggerTest {
 
     @Test
     public void testPrintValuesWithCustomFormat() {
-        Person person = new Person("Will", "Smith", 40);
+        Person person = new Person("Will", "Smith", 40, new ArrayList<>());
 
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         new Debugger(out).printValues("{0} <- {1}", person);
@@ -179,14 +285,14 @@ public class DebuggerTest {
         expected.append("name <- Will").append(LINE_SEPARATOR);
         expected.append("lastName <- Smith").append(LINE_SEPARATOR);
         expected.append("age <- 40").append(LINE_SEPARATOR);
-        expected.append("friends <- null").append(LINE_SEPARATOR);
+        expected.append("friends <- []").append(LINE_SEPARATOR);
 
         Assert.assertEquals(expected.toString(), result);
     }
 
     @Test
     public void testPrintNullValues() {
-        Person person = new Person("Will", "Smith", 40);
+        Person person = new Person("Will", "Smith", 40, null);
 
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         new Debugger(out).printNullValues(person);
@@ -200,7 +306,7 @@ public class DebuggerTest {
 
     @Test
     public void testPrintNullValuesWithCustomFormat() {
-        Person person = new Person("Will", "Smith", 40);
+        Person person = new Person("Will", "Smith", 40, null);
 
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         new Debugger(out).printNullValues("{0} is {1}", person);
@@ -214,7 +320,7 @@ public class DebuggerTest {
 
     @Test
     public void testPrintSerializableValues() {
-        Person person = new Person("Will", "Smith", 40);
+        Person person = new Person("Will", "Smith", 40, null);
 
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         new Debugger(out).printSerializableValues(person);
@@ -230,7 +336,7 @@ public class DebuggerTest {
 
     @Test
     public void testPrintSerializableValuesWithCustomFormat() {
-        Person person = new Person("Will", "Smith", 40);
+        Person person = new Person("Will", "Smith", 40, new ArrayList<>());
 
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         new Debugger(out).printSerializableValues("{0} is {1}", person);
@@ -239,7 +345,7 @@ public class DebuggerTest {
         StringBuilder expected = new StringBuilder();
         expected.append("name is Will").append(LINE_SEPARATOR);
         expected.append("age is 40").append(LINE_SEPARATOR);
-        expected.append("friends is null").append(LINE_SEPARATOR);
+        expected.append("friends is []").append(LINE_SEPARATOR);
 
         Assert.assertEquals(expected.toString(), result);
     }

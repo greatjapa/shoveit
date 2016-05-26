@@ -86,7 +86,7 @@ public class Debugger {
      * @param object object inspected
      * @return Debugger used for chaining.
      */
-    public Debugger printValues(Object object) {
+    public <T> Debugger printValues(T object) {
         return printValues(EQUAL_FORMAT, object);
     }
 
@@ -101,7 +101,7 @@ public class Debugger {
      * @param object object inspected
      * @return Debugger used for chaining.
      */
-    public Debugger printValues(String format, Object object) {
+    public <T> Debugger printValues(String format, T object) {
         return printValues(format, object, field -> true);
     }
 
@@ -115,7 +115,7 @@ public class Debugger {
      * @param object object inspected
      * @return Debugger used for chaining.
      */
-    public Debugger printNullValues(Object object) {
+    public <T> Debugger printNullValues(T object) {
         return printNullValues(EQUAL_FORMAT, object);
     }
 
@@ -130,7 +130,7 @@ public class Debugger {
      * @param object object inspected
      * @return Debugger used for chaining.
      */
-    public Debugger printNullValues(String format, Object object) {
+    public <T> Debugger printNullValues(String format, T object) {
         return printValues(format, object, field -> getValue(field, object) == null);
     }
 
@@ -144,7 +144,7 @@ public class Debugger {
      * @param object object inspected
      * @return Debugger used for chaining.
      */
-    public Debugger printSerializableValues(Object object) {
+    public <T> Debugger printSerializableValues(T object) {
         return printSerializableValues(EQUAL_FORMAT, object);
     }
 
@@ -159,7 +159,7 @@ public class Debugger {
      * @param object object inspected
      * @return Debugger used for chaining.
      */
-    public Debugger printSerializableValues(String format, Object object) {
+    public <T> Debugger printSerializableValues(String format, T object) {
         return printValues(format, object, field -> !Modifier.isTransient(field.getModifiers()));
     }
 
@@ -173,7 +173,7 @@ public class Debugger {
      * @param map map inspected
      * @return Debugger used for chaining.
      */
-    public Debugger printMap(Map<?, ?> map) {
+    public <T, S> Debugger printMap(Map<T, S> map) {
         return printMap(ARROW_FORMAT, map);
     }
 
@@ -188,13 +188,13 @@ public class Debugger {
      * @param map    map inspected
      * @return Debugger used for chaining.
      */
-    public Debugger printMap(String format, Map<?, ?> map) {
+    public <T, S> Debugger printMap(String format, Map<T, S> map) {
         if (format == null || map == null) {
             String msg = String.format("format: %s, map: %s", format, map);
             throw new IllegalArgumentException("Unexpected parameters: " + msg);
         }
 
-        println(MessageFormat.format(EQUAL_FORMAT, "map size", map.size()));
+        println(MessageFormat.format(EQUAL_FORMAT, "#size", map.size()));
         map.entrySet().stream()
                 .map(entry -> new Object[]{entry.getKey(), entry.getValue()})
                 .map(args -> MessageFormat.format(format, args))
@@ -213,7 +213,7 @@ public class Debugger {
      * @param list list inspected
      * @return Debugger used for chaining.
      */
-    public Debugger printList(List<?> list) {
+    public <T> Debugger printList(List<T> list) {
         return printList(ARROW_FORMAT, list);
     }
 
@@ -228,16 +228,88 @@ public class Debugger {
      * @param list   list inspected
      * @return Debugger used for chaining.
      */
-    public Debugger printList(String format, List<?> list) {
+    public <T> Debugger printList(String format, List<T> list) {
         if (format == null || list == null) {
             String msg = String.format("format: %s, list: %s", format, list);
             throw new IllegalArgumentException("Unexpected parameters: " + msg);
         }
 
-        println(MessageFormat.format(EQUAL_FORMAT, "list size", list.size()));
+        println(MessageFormat.format(EQUAL_FORMAT, "#size", list.size()));
         list.stream()
                 .map(elem -> new Object[]{list.indexOf(elem), elem})
                 .map(args -> MessageFormat.format(format, args))
+                .map(line -> line.concat(LINE_SEPARATOR))
+                .forEach(this::print);
+        return this;
+    }
+
+    /**
+     * Print array size and their values.
+     *
+     * NOTE: All formats should be in {@link MessageFormat#format(String, Object...)} syntax.
+     *
+     * Ex: <code>"{0} {1}"</code>, <code>"{1} : {0}"</code>, <code>"{0} -> {1}"</code>, etc
+     *
+     * @param array array inspected
+     * @return Debugger used for chaining.
+     */
+    public <T> Debugger printArray(T[] array) {
+        return printArray(ARROW_FORMAT, array);
+    }
+
+    /**
+     * Print array size and their values with the given format.
+     *
+     * NOTE: All formats should be in {@link MessageFormat#format(String, Object...)} syntax.
+     *
+     * Ex: <code>"{0} {1}"</code>, <code>"{1} : {0}"</code>, <code>"{0} -> {1}"</code>, etc
+     *
+     * @param format custom format
+     * @param array  array inspected
+     * @return Debugger used for chaining.
+     */
+    public <T> Debugger printArray(String format, T[] array) {
+        if (format == null || array == null) {
+            String msg = String.format("format: %s, array: %s", format, array);
+            throw new IllegalArgumentException("Unexpected parameters: " + msg);
+        }
+        return printList(format, Arrays.asList(array));
+    }
+
+    /**
+     * Print set size and their values.
+     *
+     * NOTE: All formats should be in {@link MessageFormat#format(String, Object...)} syntax.
+     *
+     * Ex: <code>"{0} {1}"</code>, <code>"{1} : {0}"</code>, <code>"{0} -> {1}"</code>, etc
+     *
+     * @param set    set inspected
+     * @return Debugger used for chaining.
+     */
+    public <T> Debugger printSet(Set<T> set) {
+       return printSet("{0}", set);
+    }
+
+    /**
+     * Print set size and their values with the given format.
+     *
+     * NOTE: All formats should be in {@link MessageFormat#format(String, Object...)} syntax.
+     *
+     * Ex: <code>"{0} {1}"</code>, <code>"{1} : {0}"</code>, <code>"{0} -> {1}"</code>, etc
+     *
+     * @param format custom format
+     * @param set    set inspected
+     * @return Debugger used for chaining.
+     */
+    public <T> Debugger printSet(String format, Set<T> set) {
+        if (format == null || set == null) {
+            String msg = String.format("format: %s, set: %s", format, set);
+            throw new IllegalArgumentException("Unexpected parameters: " + msg);
+        }
+
+        println(MessageFormat.format(EQUAL_FORMAT, "#size", set.size()));
+        set.stream()
+                .map(elem -> MessageFormat.format(format, elem))
                 .map(line -> line.concat(LINE_SEPARATOR))
                 .forEach(this::print);
         return this;
@@ -315,7 +387,7 @@ public class Debugger {
      * Ex: <code>"{0} {1}"</code>, <code>"{1} : {0}"</code>, <code>"{0} -> {1}"</code>, etc
      *
      * @param format custom format
-     * @param object  object inspected
+     * @param object object inspected
      * @param filter used to filter fields
      * @return Debugger used for chaining.
      */
@@ -337,7 +409,7 @@ public class Debugger {
     /**
      * Utility to get field value from object using reflexion.
      *
-     * @param field field
+     * @param field  field
      * @param object object
      * @return field value
      */

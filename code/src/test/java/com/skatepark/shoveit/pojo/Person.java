@@ -12,10 +12,11 @@ public class Person {
 
     private List<Person> friends;
 
-    public Person(String name, String lastName, int age) {
+    public Person(String name, String lastName, int age, List<Person> friends) {
         this.name = name;
         this.lastName = lastName;
         this.age = age;
+        this.friends = friends;
     }
 
     public String getName() {
