@@ -4,7 +4,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.util.function.Predicate;
 
-public class _ {
+public class F {
 
     public static final String LN = System.lineSeparator();
 
@@ -33,4 +33,23 @@ public class _ {
     public static final Predicate<Field> VOLATILE = f -> Modifier.isVolatile(f.getModifiers());
 
     public static final Predicate<Field> SYNCHRONIZED = f -> Modifier.isSynchronized(f.getModifiers());
+
+    /**
+     * Utility to get field value from object using reflexion.
+     *
+     * @param field  field
+     * @param object object
+     * @return field value
+     */
+    public static Object getValue(Field field, Object object) {
+        try {
+            boolean accessible = field.isAccessible();
+            field.setAccessible(true);
+            Object result = field.get(object);
+            field.setAccessible(accessible);
+            return result;
+        } catch (IllegalAccessException e) {
+            return null;
+        }
+    }
 }

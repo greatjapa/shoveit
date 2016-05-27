@@ -47,7 +47,7 @@ public class Debugger {
      * @return Debugger used for chaining.
      */
     public Debugger printTypes(Class clazz) {
-        return printTypes(clazz, _.SIDE_BY_SIDE_FORMAT);
+        return printTypes(clazz, F.SIDE_BY_SIDE_FORMAT);
     }
 
     /**
@@ -62,7 +62,7 @@ public class Debugger {
      * @return Debugger used for chaining.
      */
     public Debugger printTypes(Class clazz, String format) {
-        return printTypes(clazz, format, _.LN);
+        return printTypes(clazz, format, F.LN);
     }
 
     /**
@@ -78,7 +78,7 @@ public class Debugger {
      * @return Debugger used for chaining.
      */
     public Debugger printTypes(Class clazz, String format, String delimiter) {
-        return printTypes(clazz, format, delimiter, _.ALL);
+        return printTypes(clazz, format, delimiter, F.ALL);
     }
 
     /**
@@ -98,8 +98,8 @@ public class Debugger {
         Objects.requireNonNull(clazz, "clazz must not be null");
         Objects.requireNonNull(format, "format must not be null");
 
-        delimiter = Objects.toString(delimiter, _.LN);
-        filter = Objects.nonNull(filter) ? filter : _.ALL;
+        delimiter = Objects.toString(delimiter, F.LN);
+        filter = Objects.nonNull(filter) ? filter : F.ALL;
 
         return print(Arrays.stream(clazz.getDeclaredFields())
                 .filter(filter)
@@ -120,7 +120,7 @@ public class Debugger {
      * @return Debugger used for chaining.
      */
     public <T> Debugger printValues(T object) {
-        return printValues(object, _.EQUAL_FORMAT);
+        return printValues(object, F.EQUAL_FORMAT);
     }
 
     /**
@@ -135,7 +135,7 @@ public class Debugger {
      * @return Debugger used for chaining.
      */
     public <T> Debugger printValues(T object, String format) {
-        return printValues(object, format, _.LN);
+        return printValues(object, format, F.LN);
     }
 
     /**
@@ -151,7 +151,7 @@ public class Debugger {
      * @return Debugger used for chaining.
      */
     public <T> Debugger printValues(T object, String format, String delimiter) {
-        return printValues(object, format, delimiter, _.ALL);
+        return printValues(object, format, delimiter, F.ALL);
     }
 
     /**
@@ -171,12 +171,12 @@ public class Debugger {
         Objects.requireNonNull(object, "object must not be null");
         Objects.requireNonNull(format, "format must not be null");
 
-        delimiter = Objects.toString(delimiter, _.LN);
+        delimiter = Objects.toString(delimiter, F.LN);
         filter = Objects.nonNull(filter) ? filter : field -> true;
 
         return print(Arrays.stream(object.getClass().getDeclaredFields())
                 .filter(filter)
-                .map(field -> new Object[]{field.getName(), getValue(field, object)})
+                .map(field -> new Object[]{field.getName(), F.getValue(field, object)})
                 .map(args -> MessageFormat.format(format, args))
                 .collect(Collectors.joining(delimiter)));
     }
@@ -192,7 +192,7 @@ public class Debugger {
      * @return Debugger used for chaining.
      */
     public <T> Debugger printNullValues(T object) {
-        return printNullValues(object, _.EQUAL_FORMAT);
+        return printNullValues(object, F.EQUAL_FORMAT);
     }
 
     /**
@@ -207,7 +207,7 @@ public class Debugger {
      * @return Debugger used for chaining.
      */
     public <T> Debugger printNullValues(T object, String format) {
-        return printNullValues(object, format, _.LN);
+        return printNullValues(object, format, F.LN);
     }
 
     /**
@@ -223,7 +223,7 @@ public class Debugger {
      * @return Debugger used for chaining.
      */
     public <T> Debugger printNullValues(T object, String format, String delimiter) {
-        return printValues(object, format, delimiter, field -> Objects.isNull(getValue(field, object)));
+        return printValues(object, format, delimiter, field -> Objects.isNull(F.getValue(field, object)));
     }
 
     /**
@@ -237,7 +237,7 @@ public class Debugger {
      * @return Debugger used for chaining.
      */
     public <T, S> Debugger printMap(Map<T, S> map) {
-        return printMap(map, _.ARROW_FORMAT);
+        return printMap(map, F.ARROW_FORMAT);
     }
 
     /**
@@ -252,7 +252,7 @@ public class Debugger {
      * @return Debugger used for chaining.
      */
     public <T, S> Debugger printMap(Map<T, S> map, String format) {
-        return printMap(map, format, _.LN);
+        return printMap(map, format, F.LN);
     }
 
     /**
@@ -271,7 +271,7 @@ public class Debugger {
         Objects.requireNonNull(map, "map must not be null");
         Objects.requireNonNull(format, "format must not be null");
 
-        delimiter = Objects.toString(delimiter, _.LN);
+        delimiter = Objects.toString(delimiter, F.LN);
 
         return print(map.entrySet().stream()
                 .map(entry -> new Object[]{entry.getKey(), entry.getValue()})
@@ -290,7 +290,7 @@ public class Debugger {
      * @return Debugger used for chaining.
      */
     public <T> Debugger printList(List<T> list) {
-        return printList(list, _.ARROW_FORMAT);
+        return printList(list, F.ARROW_FORMAT);
     }
 
     /**
@@ -305,7 +305,7 @@ public class Debugger {
      * @return Debugger used for chaining.
      */
     public <T> Debugger printList(List<T> list, String format) {
-        return printList(list, format, _.LN);
+        return printList(list, format, F.LN);
     }
 
     /**
@@ -324,7 +324,7 @@ public class Debugger {
         Objects.requireNonNull(list, "list must not be null");
         Objects.requireNonNull(format, "format must not be null");
 
-        delimiter = Objects.toString(delimiter, _.LN);
+        delimiter = Objects.toString(delimiter, F.LN);
 
         return print(list.stream()
                 .map(elem -> new Object[]{list.indexOf(elem), elem})
@@ -343,7 +343,7 @@ public class Debugger {
      * @return Debugger used for chaining.
      */
     public <T> Debugger printArray(T[] array) {
-        return printArray(array, _.ARROW_FORMAT);
+        return printArray(array, F.ARROW_FORMAT);
     }
 
     /**
@@ -358,7 +358,7 @@ public class Debugger {
      * @return Debugger used for chaining.
      */
     public <T> Debugger printArray(T[] array, String format) {
-        return printArray(array, format, _.LN);
+        return printArray(array, format, F.LN);
     }
 
     /**
@@ -404,7 +404,7 @@ public class Debugger {
      * @return Debugger used for chaining.
      */
     public <T> Debugger printSet(Set<T> set, String format) {
-        return printSet(set, format, _.LN);
+        return printSet(set, format, F.LN);
     }
 
     /**
@@ -423,7 +423,7 @@ public class Debugger {
         Objects.requireNonNull(set, "set must not be null");
         Objects.requireNonNull(format, "format must not be null");
 
-        delimiter = Objects.toString(delimiter, _.LN);
+        delimiter = Objects.toString(delimiter, F.LN);
 
         return print(set.stream()
                 .map(elem -> MessageFormat.format(format, elem))
@@ -446,7 +446,7 @@ public class Debugger {
      * @return Debugger used for chaining.
      */
     public Debugger ln() {
-        return print(_.LN);
+        return print(F.LN);
     }
 
     /**
@@ -463,24 +463,5 @@ public class Debugger {
             e.printStackTrace();
         }
         return this;
-    }
-
-    /**
-     * Utility to get field value from object using reflexion.
-     *
-     * @param field  field
-     * @param object object
-     * @return field value
-     */
-    private Object getValue(Field field, Object object) {
-        try {
-            boolean accessible = field.isAccessible();
-            field.setAccessible(true);
-            Object result = field.get(object);
-            field.setAccessible(accessible);
-            return result;
-        } catch (IllegalAccessException e) {
-            return null;
-        }
     }
 }
