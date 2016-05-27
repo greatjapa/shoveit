@@ -3,7 +3,6 @@ package com.skatepark.shoveit;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.lang.reflect.Field;
-import java.lang.reflect.Modifier;
 import java.text.MessageFormat;
 import java.util.Arrays;
 import java.util.List;
@@ -20,16 +19,6 @@ import java.util.stream.Collectors;
  * @author Marcelo Oikawa
  */
 public class Debugger {
-
-    private static final String SIDE_BY_SIDE_FORMAT = "{0} {1}";
-
-    private static final String COLON_FORMAT = "{0} : {1}";
-
-    private static final String EQUAL_FORMAT = "{0} = {1}";
-
-    private static final String ARROW_FORMAT = "{0} -> {1}";
-
-    private static final String LINE_SEPARATOR = System.lineSeparator();
 
     /**
      * Output used by print methods.
@@ -58,7 +47,7 @@ public class Debugger {
      * @return Debugger used for chaining.
      */
     public Debugger printTypes(Class clazz) {
-        return printTypes(clazz, SIDE_BY_SIDE_FORMAT);
+        return printTypes(clazz, _.SIDE_BY_SIDE_FORMAT);
     }
 
     /**
@@ -73,7 +62,7 @@ public class Debugger {
      * @return Debugger used for chaining.
      */
     public Debugger printTypes(Class clazz, String format) {
-        return printTypes(clazz, format, LINE_SEPARATOR);
+        return printTypes(clazz, format, _.LN);
     }
 
     /**
@@ -89,7 +78,35 @@ public class Debugger {
      * @return Debugger used for chaining.
      */
     public Debugger printTypes(Class clazz, String format, String delimiter) {
-        return printTypes(clazz, format, delimiter, field -> true);
+        return printTypes(clazz, format, delimiter, _.ALL);
+    }
+
+    /**
+     * Print the filtered list of fields and their types with the given format and delimiter.
+     *
+     * NOTE: All formats should be in {@link MessageFormat#format(String, Object...)} syntax.
+     *
+     * Ex: <code>"{0} {1}"</code>, <code>"{1} : {0}"</code>, <code>"{0} -> {1}"</code>, etc
+     *
+     * @param clazz     class inspected
+     * @param format    custom format
+     * @param delimiter delimiter
+     * @param filter    used to filter fields
+     * @return Debugger used for chaining.
+     */
+    public Debugger printTypes(Class clazz, String format, String delimiter, Predicate<Field> filter) {
+        Objects.requireNonNull(clazz, "clazz must not be null");
+        Objects.requireNonNull(format, "format must not be null");
+
+        delimiter = Objects.toString(delimiter, _.LN);
+        filter = Objects.nonNull(filter) ? filter : _.ALL;
+
+        return print(Arrays.stream(clazz.getDeclaredFields())
+                .filter(filter)
+                .map(field -> new Object[]{field.getType().getSimpleName(), field.getName()})
+                .map(args -> MessageFormat.format(format, args))
+                .collect(Collectors.joining(delimiter))
+        );
     }
 
     /**
@@ -103,7 +120,7 @@ public class Debugger {
      * @return Debugger used for chaining.
      */
     public <T> Debugger printValues(T object) {
-        return printValues(object, EQUAL_FORMAT);
+        return printValues(object, _.EQUAL_FORMAT);
     }
 
     /**
@@ -118,7 +135,7 @@ public class Debugger {
      * @return Debugger used for chaining.
      */
     public <T> Debugger printValues(T object, String format) {
-        return printValues(object, format, LINE_SEPARATOR);
+        return printValues(object, format, _.LN);
     }
 
     /**
@@ -134,7 +151,34 @@ public class Debugger {
      * @return Debugger used for chaining.
      */
     public <T> Debugger printValues(T object, String format, String delimiter) {
-        return printValues(object, format, delimiter, field -> true);
+        return printValues(object, format, delimiter, _.ALL);
+    }
+
+    /**
+     * Print the filtered list of fields and their values with the given format and delimiter.
+     *
+     * NOTE: All formats should be in {@link MessageFormat#format(String, Object...)} syntax.
+     *
+     * Ex: <code>"{0} {1}"</code>, <code>"{1} : {0}"</code>, <code>"{0} -> {1}"</code>, etc
+     *
+     * @param object    object inspected
+     * @param format    custom format
+     * @param delimiter delimiter
+     * @param filter    used to filter fields
+     * @return Debugger used for chaining.
+     */
+    public Debugger printValues(Object object, String format, String delimiter, Predicate<Field> filter) {
+        Objects.requireNonNull(object, "object must not be null");
+        Objects.requireNonNull(format, "format must not be null");
+
+        delimiter = Objects.toString(delimiter, _.LN);
+        filter = Objects.nonNull(filter) ? filter : field -> true;
+
+        return print(Arrays.stream(object.getClass().getDeclaredFields())
+                .filter(filter)
+                .map(field -> new Object[]{field.getName(), getValue(field, object)})
+                .map(args -> MessageFormat.format(format, args))
+                .collect(Collectors.joining(delimiter)));
     }
 
     /**
@@ -148,7 +192,7 @@ public class Debugger {
      * @return Debugger used for chaining.
      */
     public <T> Debugger printNullValues(T object) {
-        return printNullValues(object, EQUAL_FORMAT);
+        return printNullValues(object, _.EQUAL_FORMAT);
     }
 
     /**
@@ -163,7 +207,7 @@ public class Debugger {
      * @return Debugger used for chaining.
      */
     public <T> Debugger printNullValues(T object, String format) {
-        return printNullValues(object, format, LINE_SEPARATOR);
+        return printNullValues(object, format, _.LN);
     }
 
     /**
@@ -179,52 +223,7 @@ public class Debugger {
      * @return Debugger used for chaining.
      */
     public <T> Debugger printNullValues(T object, String format, String delimiter) {
-        return printValues(object, format, delimiter, field -> getValue(field, object) == null);
-    }
-
-    /**
-     * Print all serializable field values.
-     *
-     * NOTE: All formats should be in {@link MessageFormat#format(String, Object...)} syntax.
-     *
-     * Ex: <code>"{0} {1}"</code>, <code>"{1} : {0}"</code>, <code>"{0} -> {1}"</code>, etc
-     *
-     * @param object object inspected
-     * @return Debugger used for chaining.
-     */
-    public <T> Debugger printSerializableValues(T object) {
-        return printSerializableValues(object, EQUAL_FORMAT);
-    }
-
-    /**
-     * Print all serializable field values with the given format.
-     *
-     * NOTE: All formats should be in {@link MessageFormat#format(String, Object...)} syntax.
-     *
-     * Ex: <code>"{0} {1}"</code>, <code>"{1} : {0}"</code>, <code>"{0} -> {1}"</code>, etc
-     *
-     * @param object object inspected
-     * @param format custom format
-     * @return Debugger used for chaining.
-     */
-    public <T> Debugger printSerializableValues(T object, String format) {
-        return printSerializableValues(object, format, LINE_SEPARATOR);
-    }
-
-    /**
-     * Print all serializable field values with the given format and delimiter.
-     *
-     * NOTE: All formats should be in {@link MessageFormat#format(String, Object...)} syntax.
-     *
-     * Ex: <code>"{0} {1}"</code>, <code>"{1} : {0}"</code>, <code>"{0} -> {1}"</code>, etc
-     *
-     * @param object    object inspected
-     * @param format    custom format
-     * @param delimiter delimiter
-     * @return Debugger used for chaining.
-     */
-    public <T> Debugger printSerializableValues(T object, String format, String delimiter) {
-        return printValues(object, format, delimiter, field -> !Modifier.isTransient(field.getModifiers()));
+        return printValues(object, format, delimiter, field -> Objects.isNull(getValue(field, object)));
     }
 
     /**
@@ -238,7 +237,7 @@ public class Debugger {
      * @return Debugger used for chaining.
      */
     public <T, S> Debugger printMap(Map<T, S> map) {
-        return printMap(map, ARROW_FORMAT);
+        return printMap(map, _.ARROW_FORMAT);
     }
 
     /**
@@ -253,7 +252,7 @@ public class Debugger {
      * @return Debugger used for chaining.
      */
     public <T, S> Debugger printMap(Map<T, S> map, String format) {
-        return printMap(map, format, LINE_SEPARATOR);
+        return printMap(map, format, _.LN);
     }
 
     /**
@@ -272,7 +271,7 @@ public class Debugger {
         Objects.requireNonNull(map, "map must not be null");
         Objects.requireNonNull(format, "format must not be null");
 
-        delimiter = Objects.toString(delimiter, LINE_SEPARATOR);
+        delimiter = Objects.toString(delimiter, _.LN);
 
         return print(map.entrySet().stream()
                 .map(entry -> new Object[]{entry.getKey(), entry.getValue()})
@@ -291,7 +290,7 @@ public class Debugger {
      * @return Debugger used for chaining.
      */
     public <T> Debugger printList(List<T> list) {
-        return printList(list, ARROW_FORMAT);
+        return printList(list, _.ARROW_FORMAT);
     }
 
     /**
@@ -306,7 +305,7 @@ public class Debugger {
      * @return Debugger used for chaining.
      */
     public <T> Debugger printList(List<T> list, String format) {
-        return printList(list, format, LINE_SEPARATOR);
+        return printList(list, format, _.LN);
     }
 
     /**
@@ -325,7 +324,7 @@ public class Debugger {
         Objects.requireNonNull(list, "list must not be null");
         Objects.requireNonNull(format, "format must not be null");
 
-        delimiter = Objects.toString(delimiter, LINE_SEPARATOR);
+        delimiter = Objects.toString(delimiter, _.LN);
 
         return print(list.stream()
                 .map(elem -> new Object[]{list.indexOf(elem), elem})
@@ -344,7 +343,7 @@ public class Debugger {
      * @return Debugger used for chaining.
      */
     public <T> Debugger printArray(T[] array) {
-        return printArray(array, ARROW_FORMAT);
+        return printArray(array, _.ARROW_FORMAT);
     }
 
     /**
@@ -359,7 +358,7 @@ public class Debugger {
      * @return Debugger used for chaining.
      */
     public <T> Debugger printArray(T[] array, String format) {
-        return printArray(array, format, LINE_SEPARATOR);
+        return printArray(array, format, _.LN);
     }
 
     /**
@@ -405,7 +404,7 @@ public class Debugger {
      * @return Debugger used for chaining.
      */
     public <T> Debugger printSet(Set<T> set, String format) {
-       return printSet(set, format, LINE_SEPARATOR);
+        return printSet(set, format, _.LN);
     }
 
     /**
@@ -424,7 +423,7 @@ public class Debugger {
         Objects.requireNonNull(set, "set must not be null");
         Objects.requireNonNull(format, "format must not be null");
 
-        delimiter = Objects.toString(delimiter, LINE_SEPARATOR);
+        delimiter = Objects.toString(delimiter, _.LN);
 
         return print(set.stream()
                 .map(elem -> MessageFormat.format(format, elem))
@@ -447,7 +446,7 @@ public class Debugger {
      * @return Debugger used for chaining.
      */
     public Debugger ln() {
-        return print(LINE_SEPARATOR);
+        return print(_.LN);
     }
 
     /**
@@ -464,59 +463,6 @@ public class Debugger {
             e.printStackTrace();
         }
         return this;
-    }
-
-    /**
-     * Print the filtered list of fields and their types with the given format.
-     *
-     * NOTE: All formats should be in {@link MessageFormat#format(String, Object...)} syntax.
-     *
-     * Ex: <code>"{0} {1}"</code>, <code>"{1} : {0}"</code>, <code>"{0} -> {1}"</code>, etc
-     *
-     * @param clazz     class inspected
-     * @param format    custom format
-     * @param delimiter delimiter
-     * @param filter    used to filter fields
-     * @return Debugger used for chaining.
-     */
-    private Debugger printTypes(Class clazz, String format, String delimiter, Predicate<Field> filter) {
-        Objects.requireNonNull(clazz, "clazz must not be null");
-        Objects.requireNonNull(format, "format must not be null");
-
-        delimiter = Objects.toString(delimiter, LINE_SEPARATOR);
-
-        return print(Arrays.stream(clazz.getDeclaredFields())
-                .filter(filter)
-                .map(field -> new Object[]{field.getType().getSimpleName(), field.getName()})
-                .map(args -> MessageFormat.format(format, args))
-                .collect(Collectors.joining(delimiter))
-        );
-    }
-
-    /**
-     * Print the filtered list of fields and their values with the given format.
-     *
-     * NOTE: All formats should be in {@link MessageFormat#format(String, Object...)} syntax.
-     *
-     * Ex: <code>"{0} {1}"</code>, <code>"{1} : {0}"</code>, <code>"{0} -> {1}"</code>, etc
-     *
-     * @param object    object inspected
-     * @param format    custom format
-     * @param delimiter delimiter
-     * @param filter    used to filter fields
-     * @return Debugger used for chaining.
-     */
-    private Debugger printValues(Object object, String format, String delimiter, Predicate<Field> filter) {
-        Objects.requireNonNull(object, "object must not be null");
-        Objects.requireNonNull(format, "format must not be null");
-
-        delimiter = Objects.toString(delimiter, LINE_SEPARATOR);
-
-        return print(Arrays.stream(object.getClass().getDeclaredFields())
-                .filter(filter)
-                .map(field -> new Object[]{field.getName(), getValue(field, object)})
-                .map(args -> MessageFormat.format(format, args))
-                .collect(Collectors.joining(delimiter)));
     }
 
     /**
