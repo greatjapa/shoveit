@@ -14,7 +14,7 @@ import java.util.TreeSet;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class DebuggerTest {
+public class PrinterTest {
 
     @Test
     public void testPrintList() {
@@ -23,19 +23,19 @@ public class DebuggerTest {
                 .collect(Collectors.toList());
 
         ByteArrayOutputStream out = new ByteArrayOutputStream();
-        new Debugger(out).printList(list);
+        new Printer(out).printList(list);
         String result = new String(out.toByteArray());
 
         StringBuilder expected = new StringBuilder();
-        expected.append("0 -> value0").append(F.LN);
-        expected.append("1 -> value1").append(F.LN);
-        expected.append("2 -> value2").append(F.LN);
-        expected.append("3 -> value3").append(F.LN);
-        expected.append("4 -> value4").append(F.LN);
-        expected.append("5 -> value5").append(F.LN);
-        expected.append("6 -> value6").append(F.LN);
-        expected.append("7 -> value7").append(F.LN);
-        expected.append("8 -> value8").append(F.LN);
+        expected.append("0 -> value0").append(Printer.LN);
+        expected.append("1 -> value1").append(Printer.LN);
+        expected.append("2 -> value2").append(Printer.LN);
+        expected.append("3 -> value3").append(Printer.LN);
+        expected.append("4 -> value4").append(Printer.LN);
+        expected.append("5 -> value5").append(Printer.LN);
+        expected.append("6 -> value6").append(Printer.LN);
+        expected.append("7 -> value7").append(Printer.LN);
+        expected.append("8 -> value8").append(Printer.LN);
         expected.append("9 -> value9");
 
         Assert.assertEquals(expected.toString(), result);
@@ -48,19 +48,19 @@ public class DebuggerTest {
                 .collect(Collectors.toList());
 
         ByteArrayOutputStream out = new ByteArrayOutputStream();
-        new Debugger(out).printList(list, "[{0}] = {1}");
+        new Printer(out).printList(list, "[{0}] = {1}");
         String result = new String(out.toByteArray());
 
         StringBuilder expected = new StringBuilder();
-        expected.append("[0] = value0").append(F.LN);
-        expected.append("[1] = value1").append(F.LN);
-        expected.append("[2] = value2").append(F.LN);
-        expected.append("[3] = value3").append(F.LN);
-        expected.append("[4] = value4").append(F.LN);
-        expected.append("[5] = value5").append(F.LN);
-        expected.append("[6] = value6").append(F.LN);
-        expected.append("[7] = value7").append(F.LN);
-        expected.append("[8] = value8").append(F.LN);
+        expected.append("[0] = value0").append(Printer.LN);
+        expected.append("[1] = value1").append(Printer.LN);
+        expected.append("[2] = value2").append(Printer.LN);
+        expected.append("[3] = value3").append(Printer.LN);
+        expected.append("[4] = value4").append(Printer.LN);
+        expected.append("[5] = value5").append(Printer.LN);
+        expected.append("[6] = value6").append(Printer.LN);
+        expected.append("[7] = value7").append(Printer.LN);
+        expected.append("[8] = value8").append(Printer.LN);
         expected.append("[9] = value9");
 
         Assert.assertEquals(expected.toString(), result);
@@ -73,7 +73,7 @@ public class DebuggerTest {
                 .collect(Collectors.toList());
 
         ByteArrayOutputStream out = new ByteArrayOutputStream();
-        new Debugger(out).printList(list, "[{0}] = {1}", ",");
+        new Printer(out).printList(list, "[{0}] = {1}", ",");
         String result = new String(out.toByteArray());
 
         StringBuilder expected = new StringBuilder();
@@ -98,19 +98,19 @@ public class DebuggerTest {
                 .toArray();
 
         ByteArrayOutputStream out = new ByteArrayOutputStream();
-        new Debugger(out).printArray(array);
+        new Printer(out).printArray(array);
         String result = new String(out.toByteArray());
 
         StringBuilder expected = new StringBuilder();
-        expected.append("0 -> value0").append(F.LN);
-        expected.append("1 -> value1").append(F.LN);
-        expected.append("2 -> value2").append(F.LN);
-        expected.append("3 -> value3").append(F.LN);
-        expected.append("4 -> value4").append(F.LN);
-        expected.append("5 -> value5").append(F.LN);
-        expected.append("6 -> value6").append(F.LN);
-        expected.append("7 -> value7").append(F.LN);
-        expected.append("8 -> value8").append(F.LN);
+        expected.append("0 -> value0").append(Printer.LN);
+        expected.append("1 -> value1").append(Printer.LN);
+        expected.append("2 -> value2").append(Printer.LN);
+        expected.append("3 -> value3").append(Printer.LN);
+        expected.append("4 -> value4").append(Printer.LN);
+        expected.append("5 -> value5").append(Printer.LN);
+        expected.append("6 -> value6").append(Printer.LN);
+        expected.append("7 -> value7").append(Printer.LN);
+        expected.append("8 -> value8").append(Printer.LN);
         expected.append("9 -> value9");
 
         Assert.assertEquals(expected.toString(), result);
@@ -123,19 +123,19 @@ public class DebuggerTest {
                 .toArray();
 
         ByteArrayOutputStream out = new ByteArrayOutputStream();
-        new Debugger(out).printArray(array, "[{0}] = {1}");
+        new Printer(out).printArray(array, "[{0}] = {1}");
         String result = new String(out.toByteArray());
 
         StringBuilder expected = new StringBuilder();
-        expected.append("[0] = value0").append(F.LN);
-        expected.append("[1] = value1").append(F.LN);
-        expected.append("[2] = value2").append(F.LN);
-        expected.append("[3] = value3").append(F.LN);
-        expected.append("[4] = value4").append(F.LN);
-        expected.append("[5] = value5").append(F.LN);
-        expected.append("[6] = value6").append(F.LN);
-        expected.append("[7] = value7").append(F.LN);
-        expected.append("[8] = value8").append(F.LN);
+        expected.append("[0] = value0").append(Printer.LN);
+        expected.append("[1] = value1").append(Printer.LN);
+        expected.append("[2] = value2").append(Printer.LN);
+        expected.append("[3] = value3").append(Printer.LN);
+        expected.append("[4] = value4").append(Printer.LN);
+        expected.append("[5] = value5").append(Printer.LN);
+        expected.append("[6] = value6").append(Printer.LN);
+        expected.append("[7] = value7").append(Printer.LN);
+        expected.append("[8] = value8").append(Printer.LN);
         expected.append("[9] = value9");
 
         Assert.assertEquals(expected.toString(), result);
@@ -148,7 +148,7 @@ public class DebuggerTest {
                 .toArray();
 
         ByteArrayOutputStream out = new ByteArrayOutputStream();
-        new Debugger(out).printArray(array, "[{0}] = {1}", ",");
+        new Printer(out).printArray(array, "[{0}] = {1}", ",");
         String result = new String(out.toByteArray());
 
         StringBuilder expected = new StringBuilder();
@@ -173,19 +173,19 @@ public class DebuggerTest {
                 .collect(Collectors.toMap(Integer::intValue, i -> "value" + i));
 
         ByteArrayOutputStream out = new ByteArrayOutputStream();
-        new Debugger(out).printMap(map);
+        new Printer(out).printMap(map);
         String result = new String(out.toByteArray());
 
         StringBuilder expected = new StringBuilder();
-        expected.append("0 -> value0").append(F.LN);
-        expected.append("1 -> value1").append(F.LN);
-        expected.append("2 -> value2").append(F.LN);
-        expected.append("3 -> value3").append(F.LN);
-        expected.append("4 -> value4").append(F.LN);
-        expected.append("5 -> value5").append(F.LN);
-        expected.append("6 -> value6").append(F.LN);
-        expected.append("7 -> value7").append(F.LN);
-        expected.append("8 -> value8").append(F.LN);
+        expected.append("0 -> value0").append(Printer.LN);
+        expected.append("1 -> value1").append(Printer.LN);
+        expected.append("2 -> value2").append(Printer.LN);
+        expected.append("3 -> value3").append(Printer.LN);
+        expected.append("4 -> value4").append(Printer.LN);
+        expected.append("5 -> value5").append(Printer.LN);
+        expected.append("6 -> value6").append(Printer.LN);
+        expected.append("7 -> value7").append(Printer.LN);
+        expected.append("8 -> value8").append(Printer.LN);
         expected.append("9 -> value9");
 
         Assert.assertEquals(expected.toString(), result);
@@ -198,19 +198,19 @@ public class DebuggerTest {
                 .collect(Collectors.toMap(Integer::intValue, i -> "value" + i));
 
         ByteArrayOutputStream out = new ByteArrayOutputStream();
-        new Debugger(out).printMap(map, "{0} has {1}");
+        new Printer(out).printMap(map, "{0} has {1}");
         String result = new String(out.toByteArray());
 
         StringBuilder expected = new StringBuilder();
-        expected.append("0 has value0").append(F.LN);
-        expected.append("1 has value1").append(F.LN);
-        expected.append("2 has value2").append(F.LN);
-        expected.append("3 has value3").append(F.LN);
-        expected.append("4 has value4").append(F.LN);
-        expected.append("5 has value5").append(F.LN);
-        expected.append("6 has value6").append(F.LN);
-        expected.append("7 has value7").append(F.LN);
-        expected.append("8 has value8").append(F.LN);
+        expected.append("0 has value0").append(Printer.LN);
+        expected.append("1 has value1").append(Printer.LN);
+        expected.append("2 has value2").append(Printer.LN);
+        expected.append("3 has value3").append(Printer.LN);
+        expected.append("4 has value4").append(Printer.LN);
+        expected.append("5 has value5").append(Printer.LN);
+        expected.append("6 has value6").append(Printer.LN);
+        expected.append("7 has value7").append(Printer.LN);
+        expected.append("8 has value8").append(Printer.LN);
         expected.append("9 has value9");
 
         Assert.assertEquals(expected.toString(), result);
@@ -223,7 +223,7 @@ public class DebuggerTest {
                 .collect(Collectors.toMap(Integer::intValue, i -> "value" + i));
 
         ByteArrayOutputStream out = new ByteArrayOutputStream();
-        new Debugger(out).printMap(map, "{0} has {1}", ",");
+        new Printer(out).printMap(map, "{0} has {1}", ",");
         String result = new String(out.toByteArray());
 
         StringBuilder expected = new StringBuilder();
@@ -248,19 +248,19 @@ public class DebuggerTest {
                 .collect(Collectors.toCollection(TreeSet::new));
 
         ByteArrayOutputStream out = new ByteArrayOutputStream();
-        new Debugger(out).printSet(set);
+        new Printer(out).printSet(set);
         String result = new String(out.toByteArray());
 
         StringBuilder expected = new StringBuilder();
-        expected.append("value0").append(F.LN);
-        expected.append("value1").append(F.LN);
-        expected.append("value2").append(F.LN);
-        expected.append("value3").append(F.LN);
-        expected.append("value4").append(F.LN);
-        expected.append("value5").append(F.LN);
-        expected.append("value6").append(F.LN);
-        expected.append("value7").append(F.LN);
-        expected.append("value8").append(F.LN);
+        expected.append("value0").append(Printer.LN);
+        expected.append("value1").append(Printer.LN);
+        expected.append("value2").append(Printer.LN);
+        expected.append("value3").append(Printer.LN);
+        expected.append("value4").append(Printer.LN);
+        expected.append("value5").append(Printer.LN);
+        expected.append("value6").append(Printer.LN);
+        expected.append("value7").append(Printer.LN);
+        expected.append("value8").append(Printer.LN);
         expected.append("value9");
 
         Assert.assertEquals(expected.toString(), result);
@@ -273,19 +273,19 @@ public class DebuggerTest {
                 .collect(Collectors.toCollection(TreeSet::new));
 
         ByteArrayOutputStream out = new ByteArrayOutputStream();
-        new Debugger(out).printSet(set, "~{0}");
+        new Printer(out).printSet(set, "~{0}");
         String result = new String(out.toByteArray());
 
         StringBuilder expected = new StringBuilder();
-        expected.append("~value0").append(F.LN);
-        expected.append("~value1").append(F.LN);
-        expected.append("~value2").append(F.LN);
-        expected.append("~value3").append(F.LN);
-        expected.append("~value4").append(F.LN);
-        expected.append("~value5").append(F.LN);
-        expected.append("~value6").append(F.LN);
-        expected.append("~value7").append(F.LN);
-        expected.append("~value8").append(F.LN);
+        expected.append("~value0").append(Printer.LN);
+        expected.append("~value1").append(Printer.LN);
+        expected.append("~value2").append(Printer.LN);
+        expected.append("~value3").append(Printer.LN);
+        expected.append("~value4").append(Printer.LN);
+        expected.append("~value5").append(Printer.LN);
+        expected.append("~value6").append(Printer.LN);
+        expected.append("~value7").append(Printer.LN);
+        expected.append("~value8").append(Printer.LN);
         expected.append("~value9");
 
         Assert.assertEquals(expected.toString(), result);
@@ -298,7 +298,7 @@ public class DebuggerTest {
                 .collect(Collectors.toCollection(TreeSet::new));
 
         ByteArrayOutputStream out = new ByteArrayOutputStream();
-        new Debugger(out).printSet(set, "~{0}", ",");
+        new Printer(out).printSet(set, "~{0}", ",");
         String result = new String(out.toByteArray());
 
         StringBuilder expected = new StringBuilder();
@@ -319,13 +319,13 @@ public class DebuggerTest {
     @Test
     public void testPrintTypes() {
         ByteArrayOutputStream out = new ByteArrayOutputStream();
-        new Debugger(out).printTypes(Person.class);
+        new Printer(out).printTypes(Person.class);
         String result = new String(out.toByteArray());
 
         StringBuilder expected = new StringBuilder();
-        expected.append("String name").append(F.LN);
-        expected.append("String lastName").append(F.LN);
-        expected.append("int age").append(F.LN);
+        expected.append("String name").append(Printer.LN);
+        expected.append("String lastName").append(Printer.LN);
+        expected.append("int age").append(Printer.LN);
         expected.append("List friends");
 
         Assert.assertEquals(expected.toString(), result);
@@ -334,13 +334,13 @@ public class DebuggerTest {
     @Test
     public void testPrintTypesWithCustomFormat() {
         ByteArrayOutputStream out = new ByteArrayOutputStream();
-        new Debugger(out).printTypes(Person.class, "{1} : {0}");
+        new Printer(out).printTypes(Person.class, "{1} : {0}");
         String result = new String(out.toByteArray());
 
         StringBuilder expected = new StringBuilder();
-        expected.append("name : String").append(F.LN);
-        expected.append("lastName : String").append(F.LN);
-        expected.append("age : int").append(F.LN);
+        expected.append("name : String").append(Printer.LN);
+        expected.append("lastName : String").append(Printer.LN);
+        expected.append("age : int").append(Printer.LN);
         expected.append("friends : List");
 
         Assert.assertEquals(expected.toString(), result);
@@ -349,7 +349,7 @@ public class DebuggerTest {
     @Test
     public void testPrintTypesWithCustomFormatAndDelimiter() {
         ByteArrayOutputStream out = new ByteArrayOutputStream();
-        new Debugger(out).printTypes(Person.class, "{1} : {0}", ",");
+        new Printer(out).printTypes(Person.class, "{1} : {0}", ",");
         String result = new String(out.toByteArray());
 
         StringBuilder expected = new StringBuilder();
@@ -366,13 +366,13 @@ public class DebuggerTest {
         Person person = new Person("Will", "Smith", 40, null);
 
         ByteArrayOutputStream out = new ByteArrayOutputStream();
-        new Debugger(out).printValues(person);
+        new Printer(out).printValues(person);
         String result = new String(out.toByteArray());
 
         StringBuilder expected = new StringBuilder();
-        expected.append("name = Will").append(F.LN);
-        expected.append("lastName = Smith").append(F.LN);
-        expected.append("age = 40").append(F.LN);
+        expected.append("name = Will").append(Printer.LN);
+        expected.append("lastName = Smith").append(Printer.LN);
+        expected.append("age = 40").append(Printer.LN);
         expected.append("friends = null");
 
         Assert.assertEquals(expected.toString(), result);
@@ -383,13 +383,13 @@ public class DebuggerTest {
         Person person = new Person("Will", "Smith", 40, new ArrayList<>());
 
         ByteArrayOutputStream out = new ByteArrayOutputStream();
-        new Debugger(out).printValues(person, "{0} <- {1}");
+        new Printer(out).printValues(person, "{0} <- {1}");
         String result = new String(out.toByteArray());
 
         StringBuilder expected = new StringBuilder();
-        expected.append("name <- Will").append(F.LN);
-        expected.append("lastName <- Smith").append(F.LN);
-        expected.append("age <- 40").append(F.LN);
+        expected.append("name <- Will").append(Printer.LN);
+        expected.append("lastName <- Smith").append(Printer.LN);
+        expected.append("age <- 40").append(Printer.LN);
         expected.append("friends <- []");
 
         Assert.assertEquals(expected.toString(), result);
@@ -400,7 +400,7 @@ public class DebuggerTest {
         Person person = new Person("Will", "Smith", 40, new ArrayList<>());
 
         ByteArrayOutputStream out = new ByteArrayOutputStream();
-        new Debugger(out).printValues(person, "{0} <- {1}", ",");
+        new Printer(out).printValues(person, "{0} <- {1}", ",");
         String result = new String(out.toByteArray());
 
         StringBuilder expected = new StringBuilder();
@@ -417,7 +417,7 @@ public class DebuggerTest {
         Person person = new Person("Will", "Smith", 40, null);
 
         ByteArrayOutputStream out = new ByteArrayOutputStream();
-        new Debugger(out).printNullValues(person);
+        new Printer(out).printNullValues(person);
         String result = new String(out.toByteArray());
 
         Assert.assertEquals("friends = null", result);
@@ -428,7 +428,7 @@ public class DebuggerTest {
         Person person = new Person("Will", "Smith", 40, null);
 
         ByteArrayOutputStream out = new ByteArrayOutputStream();
-        new Debugger(out).printNullValues(person, "{0} is {1}");
+        new Printer(out).printNullValues(person, "{0} is {1}");
         String result = new String(out.toByteArray());
 
         Assert.assertEquals("friends is null", result);
@@ -439,7 +439,7 @@ public class DebuggerTest {
         Person person = new Person("Will", "Smith", 40, null);
 
         ByteArrayOutputStream out = new ByteArrayOutputStream();
-        new Debugger(out).printNullValues(person, "{0} is {1}", ",");
+        new Printer(out).printNullValues(person, "{0} is {1}", ",");
         String result = new String(out.toByteArray());
 
         Assert.assertEquals("friends is null", result);
@@ -450,12 +450,12 @@ public class DebuggerTest {
         Person person = new Person("Will", "Smith", 40, null);
 
         ByteArrayOutputStream out = new ByteArrayOutputStream();
-        new Debugger(out).printValues(person, "{0} = {1}", F.LN, F.TRANSIENT.negate());
+        new Printer(out).printValues(person, "{0} = {1}", Printer.LN, Printer.TRANSIENT.negate());
         String result = new String(out.toByteArray());
 
         StringBuilder expected = new StringBuilder();
-        expected.append("name = Will").append(F.LN);
-        expected.append("age = 40").append(F.LN);
+        expected.append("name = Will").append(Printer.LN);
+        expected.append("age = 40").append(Printer.LN);
         expected.append("friends = null");
 
         Assert.assertEquals(expected.toString(), result);
@@ -466,12 +466,12 @@ public class DebuggerTest {
         Person person = new Person("Will", "Smith", 40, new ArrayList<>());
 
         ByteArrayOutputStream out = new ByteArrayOutputStream();
-        new Debugger(out).printValues(person, "{0} is {1}", F.LN, F.TRANSIENT.negate());
+        new Printer(out).printValues(person, "{0} is {1}", Printer.LN, Printer.TRANSIENT.negate());
         String result = new String(out.toByteArray());
 
         StringBuilder expected = new StringBuilder();
-        expected.append("name is Will").append(F.LN);
-        expected.append("age is 40").append(F.LN);
+        expected.append("name is Will").append(Printer.LN);
+        expected.append("age is 40").append(Printer.LN);
         expected.append("friends is []");
 
         Assert.assertEquals(expected.toString(), result);
@@ -482,7 +482,7 @@ public class DebuggerTest {
         Person person = new Person("Will", "Smith", 40, new ArrayList<>());
 
         ByteArrayOutputStream out = new ByteArrayOutputStream();
-        new Debugger(out).printValues(person, "{0} is {1}", ",", F.TRANSIENT.negate());
+        new Printer(out).printValues(person, "{0} is {1}", ",", Printer.TRANSIENT.negate());
         String result = new String(out.toByteArray());
 
         StringBuilder expected = new StringBuilder();
@@ -497,7 +497,7 @@ public class DebuggerTest {
     public void testPrint() {
         ByteArrayOutputStream out = new ByteArrayOutputStream();
 
-        new Debugger(out).println("Begin")
+        new Printer(out).println("Begin")
                 .print("First line").ln()
                 .print("Second line").ln()
                 .println("End");
@@ -505,10 +505,10 @@ public class DebuggerTest {
         String result = new String(out.toByteArray());
 
         StringBuilder expected = new StringBuilder();
-        expected.append("Begin").append(F.LN);
-        expected.append("First line").append(F.LN);
-        expected.append("Second line").append(F.LN);
-        expected.append("End").append(F.LN);
+        expected.append("Begin").append(Printer.LN);
+        expected.append("First line").append(Printer.LN);
+        expected.append("Second line").append(Printer.LN);
+        expected.append("End").append(Printer.LN);
 
         Assert.assertEquals(expected.toString(), result);
     }

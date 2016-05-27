@@ -3,6 +3,7 @@ package com.skatepark.shoveit;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
 import java.text.MessageFormat;
 import java.util.Arrays;
 import java.util.List;
@@ -18,7 +19,35 @@ import java.util.stream.Collectors;
  *
  * @author Marcelo Oikawa
  */
-public class Debugger {
+public class Printer {
+
+    public static final String LN = System.lineSeparator();
+
+    public static final String SIDE_BY_SIDE_FORMAT = "{0} {1}";
+
+    public static final String COLON_FORMAT = "{0} : {1}";
+
+    public static final String EQUAL_FORMAT = "{0} = {1}";
+
+    public static final String ARROW_FORMAT = "{0} -> {1}";
+
+    public static final Predicate<Field> ALL = f -> true;
+
+    public static final Predicate<Field> TRANSIENT = f -> Modifier.isTransient(f.getModifiers());
+
+    public static final Predicate<Field> STATIC = f -> Modifier.isStatic(f.getModifiers());
+
+    public static final Predicate<Field> PUBLIC = f -> Modifier.isPublic(f.getModifiers());
+
+    public static final Predicate<Field> PROTECTED = f -> Modifier.isProtected(f.getModifiers());
+
+    public static final Predicate<Field> FINAL = f -> Modifier.isFinal(f.getModifiers());
+
+    public static final Predicate<Field> PRIVATE = f -> Modifier.isPrivate(f.getModifiers());
+
+    public static final Predicate<Field> VOLATILE = f -> Modifier.isVolatile(f.getModifiers());
+
+    public static final Predicate<Field> SYNCHRONIZED = f -> Modifier.isSynchronized(f.getModifiers());
 
     /**
      * Output used by print methods.
@@ -28,14 +57,14 @@ public class Debugger {
     /**
      * Constructs a debugger using {@link System#out} output.
      */
-    public Debugger() {
+    public Printer() {
         this(System.out);
     }
 
     /**
      * Constructs a debugger using the given output.
      */
-    public Debugger(OutputStream out) {
+    public Printer(OutputStream out) {
         Objects.requireNonNull(out, "out must not be null");
         this.out = out;
     }
@@ -44,10 +73,10 @@ public class Debugger {
      * Print all fields and their types.
      *
      * @param clazz class inspected
-     * @return Debugger used for chaining.
+     * @return Printer used for chaining.
      */
-    public Debugger printTypes(Class clazz) {
-        return printTypes(clazz, F.SIDE_BY_SIDE_FORMAT);
+    public Printer printTypes(Class clazz) {
+        return printTypes(clazz, SIDE_BY_SIDE_FORMAT);
     }
 
     /**
@@ -59,10 +88,10 @@ public class Debugger {
      *
      * @param clazz  class inspected
      * @param format custom format
-     * @return Debugger used for chaining.
+     * @return Printer used for chaining.
      */
-    public Debugger printTypes(Class clazz, String format) {
-        return printTypes(clazz, format, F.LN);
+    public Printer printTypes(Class clazz, String format) {
+        return printTypes(clazz, format, LN);
     }
 
     /**
@@ -75,10 +104,10 @@ public class Debugger {
      * @param clazz     class inspected
      * @param format    custom format
      * @param delimiter delimiter
-     * @return Debugger used for chaining.
+     * @return Printer used for chaining.
      */
-    public Debugger printTypes(Class clazz, String format, String delimiter) {
-        return printTypes(clazz, format, delimiter, F.ALL);
+    public Printer printTypes(Class clazz, String format, String delimiter) {
+        return printTypes(clazz, format, delimiter, ALL);
     }
 
     /**
@@ -92,14 +121,14 @@ public class Debugger {
      * @param format    custom format
      * @param delimiter delimiter
      * @param filter    used to filter fields
-     * @return Debugger used for chaining.
+     * @return Printer used for chaining.
      */
-    public Debugger printTypes(Class clazz, String format, String delimiter, Predicate<Field> filter) {
+    public Printer printTypes(Class clazz, String format, String delimiter, Predicate<Field> filter) {
         Objects.requireNonNull(clazz, "clazz must not be null");
         Objects.requireNonNull(format, "format must not be null");
 
-        delimiter = Objects.toString(delimiter, F.LN);
-        filter = Objects.nonNull(filter) ? filter : F.ALL;
+        delimiter = Objects.toString(delimiter, LN);
+        filter = Objects.nonNull(filter) ? filter : ALL;
 
         return print(Arrays.stream(clazz.getDeclaredFields())
                 .filter(filter)
@@ -117,10 +146,10 @@ public class Debugger {
      * Ex: <code>"{0} {1}"</code>, <code>"{1} : {0}"</code>, <code>"{0} -> {1}"</code>, etc
      *
      * @param object object inspected
-     * @return Debugger used for chaining.
+     * @return Printer used for chaining.
      */
-    public <T> Debugger printValues(T object) {
-        return printValues(object, F.EQUAL_FORMAT);
+    public <T> Printer printValues(T object) {
+        return printValues(object, EQUAL_FORMAT);
     }
 
     /**
@@ -132,10 +161,10 @@ public class Debugger {
      *
      * @param object object inspected
      * @param format custom format
-     * @return Debugger used for chaining.
+     * @return Printer used for chaining.
      */
-    public <T> Debugger printValues(T object, String format) {
-        return printValues(object, format, F.LN);
+    public <T> Printer printValues(T object, String format) {
+        return printValues(object, format, LN);
     }
 
     /**
@@ -148,10 +177,10 @@ public class Debugger {
      * @param object    object inspected
      * @param format    custom format
      * @param delimiter delimiter
-     * @return Debugger used for chaining.
+     * @return Printer used for chaining.
      */
-    public <T> Debugger printValues(T object, String format, String delimiter) {
-        return printValues(object, format, delimiter, F.ALL);
+    public <T> Printer printValues(T object, String format, String delimiter) {
+        return printValues(object, format, delimiter, ALL);
     }
 
     /**
@@ -165,18 +194,18 @@ public class Debugger {
      * @param format    custom format
      * @param delimiter delimiter
      * @param filter    used to filter fields
-     * @return Debugger used for chaining.
+     * @return Printer used for chaining.
      */
-    public Debugger printValues(Object object, String format, String delimiter, Predicate<Field> filter) {
+    public Printer printValues(Object object, String format, String delimiter, Predicate<Field> filter) {
         Objects.requireNonNull(object, "object must not be null");
         Objects.requireNonNull(format, "format must not be null");
 
-        delimiter = Objects.toString(delimiter, F.LN);
+        delimiter = Objects.toString(delimiter, LN);
         filter = Objects.nonNull(filter) ? filter : field -> true;
 
         return print(Arrays.stream(object.getClass().getDeclaredFields())
                 .filter(filter)
-                .map(field -> new Object[]{field.getName(), F.getValue(field, object)})
+                .map(field -> new Object[]{field.getName(), getValue(field, object)})
                 .map(args -> MessageFormat.format(format, args))
                 .collect(Collectors.joining(delimiter)));
     }
@@ -189,10 +218,10 @@ public class Debugger {
      * Ex: <code>"{0} {1}"</code>, <code>"{1} : {0}"</code>, <code>"{0} -> {1}"</code>, etc
      *
      * @param object object inspected
-     * @return Debugger used for chaining.
+     * @return Printer used for chaining.
      */
-    public <T> Debugger printNullValues(T object) {
-        return printNullValues(object, F.EQUAL_FORMAT);
+    public <T> Printer printNullValues(T object) {
+        return printNullValues(object, EQUAL_FORMAT);
     }
 
     /**
@@ -204,10 +233,10 @@ public class Debugger {
      *
      * @param object object inspected
      * @param format custom format
-     * @return Debugger used for chaining.
+     * @return Printer used for chaining.
      */
-    public <T> Debugger printNullValues(T object, String format) {
-        return printNullValues(object, format, F.LN);
+    public <T> Printer printNullValues(T object, String format) {
+        return printNullValues(object, format, LN);
     }
 
     /**
@@ -220,10 +249,10 @@ public class Debugger {
      * @param object    object inspected
      * @param format    custom format
      * @param delimiter delimiter
-     * @return Debugger used for chaining.
+     * @return Printer used for chaining.
      */
-    public <T> Debugger printNullValues(T object, String format, String delimiter) {
-        return printValues(object, format, delimiter, field -> Objects.isNull(F.getValue(field, object)));
+    public <T> Printer printNullValues(T object, String format, String delimiter) {
+        return printValues(object, format, delimiter, field -> Objects.isNull(getValue(field, object)));
     }
 
     /**
@@ -234,10 +263,10 @@ public class Debugger {
      * Ex: <code>"{0} {1}"</code>, <code>"{1} : {0}"</code>, <code>"{0} -> {1}"</code>, etc
      *
      * @param map map inspected
-     * @return Debugger used for chaining.
+     * @return Printer used for chaining.
      */
-    public <T, S> Debugger printMap(Map<T, S> map) {
-        return printMap(map, F.ARROW_FORMAT);
+    public <T, S> Printer printMap(Map<T, S> map) {
+        return printMap(map, ARROW_FORMAT);
     }
 
     /**
@@ -249,10 +278,10 @@ public class Debugger {
      *
      * @param map    map inspected
      * @param format custom format
-     * @return Debugger used for chaining.
+     * @return Printer used for chaining.
      */
-    public <T, S> Debugger printMap(Map<T, S> map, String format) {
-        return printMap(map, format, F.LN);
+    public <T, S> Printer printMap(Map<T, S> map, String format) {
+        return printMap(map, format, LN);
     }
 
     /**
@@ -265,13 +294,13 @@ public class Debugger {
      * @param map       map inspected
      * @param format    custom format
      * @param delimiter delimiter
-     * @return Debugger used for chaining.
+     * @return Printer used for chaining.
      */
-    public <T, S> Debugger printMap(Map<T, S> map, String format, String delimiter) {
+    public <T, S> Printer printMap(Map<T, S> map, String format, String delimiter) {
         Objects.requireNonNull(map, "map must not be null");
         Objects.requireNonNull(format, "format must not be null");
 
-        delimiter = Objects.toString(delimiter, F.LN);
+        delimiter = Objects.toString(delimiter, LN);
 
         return print(map.entrySet().stream()
                 .map(entry -> new Object[]{entry.getKey(), entry.getValue()})
@@ -287,10 +316,10 @@ public class Debugger {
      * Ex: <code>"{0} {1}"</code>, <code>"{1} : {0}"</code>, <code>"{0} -> {1}"</code>, etc
      *
      * @param list list inspected
-     * @return Debugger used for chaining.
+     * @return Printer used for chaining.
      */
-    public <T> Debugger printList(List<T> list) {
-        return printList(list, F.ARROW_FORMAT);
+    public <T> Printer printList(List<T> list) {
+        return printList(list, ARROW_FORMAT);
     }
 
     /**
@@ -302,10 +331,10 @@ public class Debugger {
      *
      * @param list   list inspected
      * @param format custom format
-     * @return Debugger used for chaining.
+     * @return Printer used for chaining.
      */
-    public <T> Debugger printList(List<T> list, String format) {
-        return printList(list, format, F.LN);
+    public <T> Printer printList(List<T> list, String format) {
+        return printList(list, format, LN);
     }
 
     /**
@@ -318,13 +347,13 @@ public class Debugger {
      * @param list      list inspected
      * @param format    custom format
      * @param delimiter delimiter
-     * @return Debugger used for chaining.
+     * @return Printer used for chaining.
      */
-    public <T> Debugger printList(List<T> list, String format, String delimiter) {
+    public <T> Printer printList(List<T> list, String format, String delimiter) {
         Objects.requireNonNull(list, "list must not be null");
         Objects.requireNonNull(format, "format must not be null");
 
-        delimiter = Objects.toString(delimiter, F.LN);
+        delimiter = Objects.toString(delimiter, LN);
 
         return print(list.stream()
                 .map(elem -> new Object[]{list.indexOf(elem), elem})
@@ -340,10 +369,10 @@ public class Debugger {
      * Ex: <code>"{0} {1}"</code>, <code>"{1} : {0}"</code>, <code>"{0} -> {1}"</code>, etc
      *
      * @param array array inspected
-     * @return Debugger used for chaining.
+     * @return Printer used for chaining.
      */
-    public <T> Debugger printArray(T[] array) {
-        return printArray(array, F.ARROW_FORMAT);
+    public <T> Printer printArray(T[] array) {
+        return printArray(array, ARROW_FORMAT);
     }
 
     /**
@@ -355,10 +384,10 @@ public class Debugger {
      *
      * @param array  array inspected
      * @param format custom format
-     * @return Debugger used for chaining.
+     * @return Printer used for chaining.
      */
-    public <T> Debugger printArray(T[] array, String format) {
-        return printArray(array, format, F.LN);
+    public <T> Printer printArray(T[] array, String format) {
+        return printArray(array, format, LN);
     }
 
     /**
@@ -371,9 +400,9 @@ public class Debugger {
      * @param array     array inspected
      * @param format    custom format
      * @param delimiter delimiter
-     * @return Debugger used for chaining.
+     * @return Printer used for chaining.
      */
-    public <T> Debugger printArray(T[] array, String format, String delimiter) {
+    public <T> Printer printArray(T[] array, String format, String delimiter) {
         Objects.requireNonNull(array, "array must not be null");
         return printList(Arrays.asList(array), format, delimiter);
     }
@@ -386,9 +415,9 @@ public class Debugger {
      * Ex: <code>"{0} {1}"</code>, <code>"{1} : {0}"</code>, <code>"{0} -> {1}"</code>, etc
      *
      * @param set set inspected
-     * @return Debugger used for chaining.
+     * @return Printer used for chaining.
      */
-    public <T> Debugger printSet(Set<T> set) {
+    public <T> Printer printSet(Set<T> set) {
         return printSet(set, "{0}");
     }
 
@@ -401,10 +430,10 @@ public class Debugger {
      *
      * @param set    set inspected
      * @param format custom format
-     * @return Debugger used for chaining.
+     * @return Printer used for chaining.
      */
-    public <T> Debugger printSet(Set<T> set, String format) {
-        return printSet(set, format, F.LN);
+    public <T> Printer printSet(Set<T> set, String format) {
+        return printSet(set, format, LN);
     }
 
     /**
@@ -417,13 +446,13 @@ public class Debugger {
      * @param set       set inspected
      * @param format    custom format
      * @param delimiter delimiter
-     * @return Debugger used for chaining.
+     * @return Printer used for chaining.
      */
-    public <T> Debugger printSet(Set<T> set, String format, String delimiter) {
+    public <T> Printer printSet(Set<T> set, String format, String delimiter) {
         Objects.requireNonNull(set, "set must not be null");
         Objects.requireNonNull(format, "format must not be null");
 
-        delimiter = Objects.toString(delimiter, F.LN);
+        delimiter = Objects.toString(delimiter, LN);
 
         return print(set.stream()
                 .map(elem -> MessageFormat.format(format, elem))
@@ -434,28 +463,28 @@ public class Debugger {
      * Print {@link String} value with {@link System#lineSeparator}.
      *
      * @param value value as {@link String}
-     * @return Debugger used for chaining.
+     * @return Printer used for chaining.
      */
-    public Debugger println(String value) {
+    public Printer println(String value) {
         return print(value).ln();
     }
 
     /**
      * Print line separator defined by {@link System#lineSeparator}.
      *
-     * @return Debugger used for chaining.
+     * @return Printer used for chaining.
      */
-    public Debugger ln() {
-        return print(F.LN);
+    public Printer ln() {
+        return print(LN);
     }
 
     /**
      * Print {@link String} value.
      *
      * @param value value as {@link String}
-     * @return Debugger used for chaining.
+     * @return Printer used for chaining.
      */
-    public Debugger print(String value) {
+    public Printer print(String value) {
         Objects.requireNonNull(value, "value must not be null");
         try {
             out.write(value.getBytes());
@@ -463,5 +492,24 @@ public class Debugger {
             e.printStackTrace();
         }
         return this;
+    }
+
+    /**
+     * Utility to get field value from object using reflexion.
+     *
+     * @param field  field
+     * @param object object
+     * @return field value
+     */
+    private Object getValue(Field field, Object object) {
+        try {
+            boolean accessible = field.isAccessible();
+            field.setAccessible(true);
+            Object result = field.get(object);
+            field.setAccessible(accessible);
+            return result;
+        } catch (IllegalAccessException e) {
+            return null;
+        }
     }
 }
