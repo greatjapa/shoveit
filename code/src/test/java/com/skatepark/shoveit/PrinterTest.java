@@ -23,10 +23,14 @@ public class PrinterTest {
                 .collect(Collectors.toList());
 
         ByteArrayOutputStream out = new ByteArrayOutputStream();
-        new Printer(out).printList(list);
+        new Printer(out)
+                .printSize(list)
+                .print(Printer.LN)
+                .printList(list);
         String result = new String(out.toByteArray());
 
         StringBuilder expected = new StringBuilder();
+        expected.append("size 10").append(Printer.LN);
         expected.append("0 -> value0").append(Printer.LN);
         expected.append("1 -> value1").append(Printer.LN);
         expected.append("2 -> value2").append(Printer.LN);
@@ -48,10 +52,14 @@ public class PrinterTest {
                 .collect(Collectors.toList());
 
         ByteArrayOutputStream out = new ByteArrayOutputStream();
-        new Printer(out).printList(list, "[{0}] = {1}");
+        new Printer(out)
+                .printSize(list, "{1}")
+                .print(Printer.LN)
+                .printList(list, "[{0}] = {1}");
         String result = new String(out.toByteArray());
 
         StringBuilder expected = new StringBuilder();
+        expected.append("10").append(Printer.LN);
         expected.append("[0] = value0").append(Printer.LN);
         expected.append("[1] = value1").append(Printer.LN);
         expected.append("[2] = value2").append(Printer.LN);
@@ -73,10 +81,14 @@ public class PrinterTest {
                 .collect(Collectors.toList());
 
         ByteArrayOutputStream out = new ByteArrayOutputStream();
-        new Printer(out).printList(list, "[{0}] = {1}", ",");
+        new Printer(out)
+                .printSize(list, "{1},")
+                .print(Printer.LN)
+                .printList(list, "[{0}] = {1}", ",");
         String result = new String(out.toByteArray());
 
         StringBuilder expected = new StringBuilder();
+        expected.append("10,").append(Printer.LN);
         expected.append("[0] = value0").append(",");
         expected.append("[1] = value1").append(",");
         expected.append("[2] = value2").append(",");
@@ -98,10 +110,14 @@ public class PrinterTest {
                 .toArray();
 
         ByteArrayOutputStream out = new ByteArrayOutputStream();
-        new Printer(out).printArray(array);
+        new Printer(out)
+                .printSize(array)
+                .print(Printer.LN)
+                .printArray(array);
         String result = new String(out.toByteArray());
 
         StringBuilder expected = new StringBuilder();
+        expected.append("size 10").append(Printer.LN);
         expected.append("0 -> value0").append(Printer.LN);
         expected.append("1 -> value1").append(Printer.LN);
         expected.append("2 -> value2").append(Printer.LN);
@@ -123,10 +139,14 @@ public class PrinterTest {
                 .toArray();
 
         ByteArrayOutputStream out = new ByteArrayOutputStream();
-        new Printer(out).printArray(array, "[{0}] = {1}");
+        new Printer(out)
+                .printSize(array, "{1}")
+                .print(Printer.LN)
+                .printArray(array, "[{0}] = {1}");
         String result = new String(out.toByteArray());
 
         StringBuilder expected = new StringBuilder();
+        expected.append("10").append(Printer.LN);
         expected.append("[0] = value0").append(Printer.LN);
         expected.append("[1] = value1").append(Printer.LN);
         expected.append("[2] = value2").append(Printer.LN);
@@ -148,10 +168,14 @@ public class PrinterTest {
                 .toArray();
 
         ByteArrayOutputStream out = new ByteArrayOutputStream();
-        new Printer(out).printArray(array, "[{0}] = {1}", ",");
+        new Printer(out)
+                .printSize(array, "{1},")
+                .print(Printer.LN)
+                .printArray(array, "[{0}] = {1}", ",");
         String result = new String(out.toByteArray());
 
         StringBuilder expected = new StringBuilder();
+        expected.append("10,").append(Printer.LN);
         expected.append("[0] = value0").append(",");
         expected.append("[1] = value1").append(",");
         expected.append("[2] = value2").append(",");

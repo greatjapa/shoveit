@@ -6,6 +6,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.text.MessageFormat;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -256,7 +257,7 @@ public class Printer {
     }
 
     /**
-     * Print map size and their values.
+     * Print map and their values.
      *
      * NOTE: All formats should be in {@link MessageFormat#format(String, Object...)} syntax.
      *
@@ -270,7 +271,7 @@ public class Printer {
     }
 
     /**
-     * Print map size and their values with the given format.
+     * Print map and their values with the given format.
      *
      * NOTE: All formats should be in {@link MessageFormat#format(String, Object...)} syntax.
      *
@@ -285,7 +286,7 @@ public class Printer {
     }
 
     /**
-     * Print map size and their values with the given format.
+     * Print map and their values with the given format.
      *
      * NOTE: All formats should be in {@link MessageFormat#format(String, Object...)} syntax.
      *
@@ -309,7 +310,7 @@ public class Printer {
     }
 
     /**
-     * Print list size and their values.
+     * Print list and their values.
      *
      * NOTE: All formats should be in {@link MessageFormat#format(String, Object...)} syntax.
      *
@@ -323,7 +324,7 @@ public class Printer {
     }
 
     /**
-     * Print list size and their values with the given format.
+     * Print list and their values with the given format.
      *
      * NOTE: All formats should be in {@link MessageFormat#format(String, Object...)} syntax.
      *
@@ -338,7 +339,7 @@ public class Printer {
     }
 
     /**
-     * Print list size and their values with the given format and delimiter.
+     * Print list and their values with the given format and delimiter.
      *
      * NOTE: All formats should be in {@link MessageFormat#format(String, Object...)} syntax.
      *
@@ -362,7 +363,7 @@ public class Printer {
     }
 
     /**
-     * Print array size and their values.
+     * Print array and their values.
      *
      * NOTE: All formats should be in {@link MessageFormat#format(String, Object...)} syntax.
      *
@@ -376,7 +377,7 @@ public class Printer {
     }
 
     /**
-     * Print array size and their values with the given format.
+     * Print array and their values with the given format.
      *
      * NOTE: All formats should be in {@link MessageFormat#format(String, Object...)} syntax.
      *
@@ -391,7 +392,7 @@ public class Printer {
     }
 
     /**
-     * Print array size and their values with the given format.
+     * Print array and their values with the given format.
      *
      * NOTE: All formats should be in {@link MessageFormat#format(String, Object...)} syntax.
      *
@@ -408,7 +409,7 @@ public class Printer {
     }
 
     /**
-     * Print set size and their values.
+     * Print set and their values.
      *
      * NOTE: All formats should be in {@link MessageFormat#format(String, Object...)} syntax.
      *
@@ -422,7 +423,7 @@ public class Printer {
     }
 
     /**
-     * Print set size and their values with the given format.
+     * Print set and their values with the given format.
      *
      * NOTE: All formats should be in {@link MessageFormat#format(String, Object...)} syntax.
      *
@@ -437,7 +438,7 @@ public class Printer {
     }
 
     /**
-     * Print set size and their values with the given format and delimiter.
+     * Print set and their values with the given format and delimiter.
      *
      * NOTE: All formats should be in {@link MessageFormat#format(String, Object...)} syntax.
      *
@@ -457,6 +458,67 @@ public class Printer {
         return print(set.stream()
                 .map(elem -> MessageFormat.format(format, elem))
                 .collect(Collectors.joining(delimiter)));
+    }
+
+    /**
+     * Print array size with the given format.
+     *
+     * NOTE: All formats should be in {@link MessageFormat#format(String, Object...)} syntax.
+     *
+     * Ex: <code>"{0} {1}"</code>, <code>"{1} : {0}"</code>, <code>"{0} -> {1}"</code>, etc
+     *
+     * @param array array inspected
+     * @return Printer used for chaining.
+     */
+    public <T> Printer printSize(T[] array) {
+        return printSize(array, SIDE_BY_SIDE_FORMAT);
+    }
+
+    /**
+     * Print array size with the given format.
+     *
+     * NOTE: All formats should be in {@link MessageFormat#format(String, Object...)} syntax.
+     *
+     * Ex: <code>"{0} {1}"</code>, <code>"{1} : {0}"</code>, <code>"{0} -> {1}"</code>, etc
+     *
+     * @param array  array inspected
+     * @param format custom format
+     * @return Printer used for chaining.
+     */
+    public <T> Printer printSize(T[] array, String format) {
+        return printSize(Arrays.asList(array), format);
+    }
+
+    /**
+     * Print collection size with the given format.
+     *
+     * NOTE: All formats should be in {@link MessageFormat#format(String, Object...)} syntax.
+     *
+     * Ex: <code>"{0} {1}"</code>, <code>"{1} : {0}"</code>, <code>"{0} -> {1}"</code>, etc
+     *
+     * @param collection collection inspected
+     * @return Printer used for chaining.
+     */
+    public <T> Printer printSize(Collection<T> collection) {
+        return printSize(collection, SIDE_BY_SIDE_FORMAT);
+    }
+
+    /**
+     * Print collection size with the given format.
+     *
+     * NOTE: All formats should be in {@link MessageFormat#format(String, Object...)} syntax.
+     *
+     * Ex: <code>"{0} {1}"</code>, <code>"{1} : {0}"</code>, <code>"{0} -> {1}"</code>, etc
+     *
+     * @param collection collection inspected
+     * @param format     custom format
+     * @return Printer used for chaining.
+     */
+    public <T> Printer printSize(Collection<T> collection, String format) {
+        Objects.requireNonNull(collection, "collection must not be null");
+        Objects.requireNonNull(format, "format must not be null");
+
+        return print(MessageFormat.format(format, "size", collection.size()));
     }
 
     /**
@@ -490,6 +552,21 @@ public class Printer {
             out.write(value.getBytes());
         } catch (IOException e) {
             e.printStackTrace();
+        }
+        return this;
+    }
+
+    /**
+     * Sleep.
+     *
+     * @param miliseconds miliseconds.
+     * @return Printer used for chaining.
+     */
+    public Printer sleep(long miliseconds) {
+        try {
+            Thread.sleep(miliseconds);
+        } catch (InterruptedException e) {
+            // do nothing
         }
         return this;
     }
