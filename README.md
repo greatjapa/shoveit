@@ -1,5 +1,7 @@
 # Shoveit 
 
+[![Build Status](https://travis-ci.org/greatjapa/bigspin.svg?branch=master)](https://travis-ci.org/greatjapa/bigspin)
+
 A Yet Another Personal Debugger.
 
 #### Examples
