@@ -1,6 +1,6 @@
 # Shoveit 
 
-[![Build Status](https://travis-ci.org/greatjapa/bigspin.svg?branch=master)](https://travis-ci.org/greatjapa/bigspin)
+[![Build Status](https://travis-ci.org/greatjapa/shoveit.svg?branch=master)](https://travis-ci.org/greatjapa/shoveit)
 
 A Yet Another Personal Debugger.
 
