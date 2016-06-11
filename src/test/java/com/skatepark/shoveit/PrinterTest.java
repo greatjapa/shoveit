@@ -24,8 +24,7 @@ public class PrinterTest {
 
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         new Printer(out)
-                .printSize(list)
-                .print(Printer.LN)
+                .printSize(list).ln()
                 .printList(list);
         String result = new String(out.toByteArray());
 
@@ -53,8 +52,7 @@ public class PrinterTest {
 
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         new Printer(out)
-                .printSize(list, "{1}")
-                .print(Printer.LN)
+                .printSize(list, "{1}").ln()
                 .printList(list, "[{0}] = {1}");
         String result = new String(out.toByteArray());
 
@@ -82,8 +80,7 @@ public class PrinterTest {
 
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         new Printer(out)
-                .printSize(list, "{1},")
-                .print(Printer.LN)
+                .printSize(list, "{1},").ln()
                 .printList(list, "[{0}] = {1}", ",");
         String result = new String(out.toByteArray());
 
@@ -111,8 +108,7 @@ public class PrinterTest {
 
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         new Printer(out)
-                .printSize(array)
-                .print(Printer.LN)
+                .printSize(array).ln()
                 .printArray(array);
         String result = new String(out.toByteArray());
 
@@ -140,8 +136,7 @@ public class PrinterTest {
 
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         new Printer(out)
-                .printSize(array, "{1}")
-                .print(Printer.LN)
+                .printSize(array, "{1}").ln()
                 .printArray(array, "[{0}] = {1}");
         String result = new String(out.toByteArray());
 
@@ -169,8 +164,7 @@ public class PrinterTest {
 
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         new Printer(out)
-                .printSize(array, "{1},")
-                .print(Printer.LN)
+                .printSize(array, "{1},").ln()
                 .printArray(array, "[{0}] = {1}", ",");
         String result = new String(out.toByteArray());
 

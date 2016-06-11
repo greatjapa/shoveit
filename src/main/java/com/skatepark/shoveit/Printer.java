@@ -557,21 +557,6 @@ public class Printer {
     }
 
     /**
-     * Sleep.
-     *
-     * @param miliseconds miliseconds.
-     * @return Printer used for chaining.
-     */
-    public Printer sleep(long miliseconds) {
-        try {
-            Thread.sleep(miliseconds);
-        } catch (InterruptedException e) {
-            // do nothing
-        }
-        return this;
-    }
-
-    /**
      * Utility to get field value from object using reflexion.
      *
      * @param field  field

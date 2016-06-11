@@ -10,7 +10,7 @@ A Yet Another Personal Debugger.
 Print field types:
 
 ```Java
-new Debugger().printTypes(Person.class);
+new Printer().printTypes(Person.class);
 
 // String name
 // String lastName
@@ -21,7 +21,7 @@ new Debugger().printTypes(Person.class);
 Print field types with custom format:
 
 ```Java
-new Debugger().printTypes("{1} : {0}", Person.class);
+new Printer().printTypes(Person.class, "{1} : {0}");
 
 // name : String 
 // lastName : String
@@ -32,57 +32,56 @@ new Debugger().printTypes("{1} : {0}", Person.class);
 Print values:
 
 ```Java
-Person person = new Person("Will", "Smith", 40);
+Person person = new Person("Will", "Smith", 40, null);
 
-new Debugger().printValues(person);
+new Printer().printValues(person);
 
-// name : Will
-// lastName : Smith
-// age : 40
-// friends : null
+// name = Will
+// lastName = Smith
+// age = 40
+// friends = null
 ```
 
 Print values with custom format:
 
 ```Java
-Person person = new Person("Will", "Smith", 40);
+Person person = new Person("Will", "Smith", 40, null);
 
-new Debugger().printValues("{0} is {1}", person);
+new Printer().printValues(person, "{0} <- {1}");
 
-// name is Will
-// lastName is Smith
-// age is 40
-// friends is null
+// name <- Will
+// lastName <- Smith
+// age <- 40
+// friends <- null
 ```
 
 Print null values:
 
 ```Java
-Person person = new Person("Will", "Smith", 40);
+Person person = new Person("Will", "Smith", 40, null);
 
-new Debugger().printNullValues(person);
-
-// friends : null
+ new Printer().printNullValues(person);
+ 
+// friends = null
 ```
 
 Print serializable field values:
 
 ```Java
-Person person = new Person("Will", "Smith", 40); //lastName is transient
+Person person = new Person("Will", "Smith", 40, null);
 
-new Debugger().printSerializableValues(person);
+new Printer().printValues(person, "{0} = {1}", Printer.LN, Printer.TRANSIENT.negate());
 
-// name : Will
-// age : 40
-// friends : null
+// name = Will
+// age = 40
+// friends = null
 ```
 
 Print map:
 
 ```Java
-new Debugger().printMap(map);
+new Printer().printMap(map);
 
-// map size = 4
 // cat -> Meow
 // ape -> Squeak
 // dog -> Woof
@@ -92,9 +91,8 @@ new Debugger().printMap(map);
 Print map with custom format:
 
 ```Java
-new Debugger().printMap("\"{0}\" : \"{1}\"", map);
+new Printer().printMap(map, "\"{0}\" : \"{1}\"");
 
-// map size = 4
 // "cat" : "Meow"
 // "ape" : "Squeak"
 // "dog" : "Woof"
@@ -104,9 +102,8 @@ new Debugger().printMap("\"{0}\" : \"{1}\"", map);
 Print list:
 
 ```Java
-new Debugger().printMap(list);
+new Printer().printList(list);
 
-// list size = 4
 // 0 -> cat
 // 1 -> ape
 // 2 -> dog
@@ -116,9 +113,8 @@ new Debugger().printMap(list);
 Print list with custom format:
 
 ```Java
-new Debugger().printMap("[{0}] = {1}", list);
+new Printer().printList(list, "[{0}] = {1}");
 
-// list size = 4
 // [0] = cat
 // [1] = ape
 // [2] = dog
@@ -128,17 +124,19 @@ new Debugger().printMap("[{0}] = {1}", list);
 Print Strings and chaining:
 
 ```Java
-new Debugger()
-       .println("-- Person values --")
-       .printValues("\"{0}\" : \"{1}\"", new Person("Will", "Smith", 40))
-       .println("------ end --------");
+Person person = new Person("Will", "Smith", 40);
 
-// -- Person values --
-// "name" : "Will"
-// "lastName" : "Smith"
-// "age" : "40"
+new Printer()
+       .println("{")
+       .printValues(person, "\"{0}\" : \"{1}\"", ",")
+       .println("}");
+
+// {
+// "name" : "Will",
+// "lastName" : "Smith",
+// "age" : "40",
 // "friends" : "null"
-// ------ end --------
+// }
 ```
 
 ## License
