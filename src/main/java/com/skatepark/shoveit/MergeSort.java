@@ -1,34 +1,42 @@
 package com.skatepark.shoveit;
 
-public class MergeSort {
+import java.util.Comparator;
 
-    public static void sort(int[] values) {
-        sort(values, 0, values.length - 1);
+public class MergeSort implements ISort {
+
+    @Override
+    public <T> void sort(T[] list) {
+        sort(list, null);
+    }
+
+    @Override
+    public <T> void sort(T[] list, Comparator<T> comparator) {
+        sort(list, 0, list.length - 1, comparator);
     }
 
     /**
      * @param start inclusive
      * @param end   inclusive.
      */
-    private static void sort(int[] values, int start, int end) {
+    private <T> void sort(T[] values, int start, int end, Comparator<T> comparator) {
         if (end - start < 1) {
             return;
         }
 
         int middle = (end + start) / 2;
-        sort(values, start, middle);
-        sort(values, middle + 1, end);
+        sort(values, start, middle, comparator);
+        sort(values, middle + 1, end, comparator);
 
-        merge(values, start, end, middle);
+        merge(values, start, end, middle, comparator);
     }
 
-    private static void merge(int[] values, int start, int end, int middle) {
-        int[] sorted = new int[end - start + 1];
+    private <T> void merge(T[] values, int start, int end, int middle, Comparator<T> comparator) {
+        Object[] sorted = new Object[end - start + 1];
         int sIndex = 0;
 
         int i = start, j = middle + 1;
         while (i <= middle && j <= end) {
-            if (values[i] < values[j]) {
+            if (compare(values[i], values[j], comparator) < 0) {
                 sorted[sIndex++] = values[i++];
             } else {
                 sorted[sIndex++] = values[j++];
@@ -43,8 +51,16 @@ public class MergeSort {
         }
 
         i = start;
-        for (int v : sorted) {
-            values[i++] = v;
+        for (Object v : sorted) {
+            values[i++] = (T) v;
         }
     }
+
+    private <T> int compare(T obj1, T obj2, Comparator<T> comparator) {
+        if (comparator != null) {
+            return comparator.compare(obj1, obj2);
+        }
+        return ((Comparable<T>) obj1).compareTo(obj2);
+    }
+
 }
