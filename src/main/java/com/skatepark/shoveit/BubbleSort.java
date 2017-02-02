@@ -3,10 +3,6 @@ package com.skatepark.shoveit;
 import java.util.Comparator;
 
 public class BubbleSort implements ISort {
-    @Override
-    public <T> void sort(T[] list) {
-        sort(list, null);
-    }
 
     @Override
     public <T> void sort(T[] list, Comparator<T> comparator) {
