@@ -5,11 +5,6 @@ import java.util.Comparator;
 public class MergeSort implements ISort {
 
     @Override
-    public <T> void sort(T[] list) {
-        sort(list, null);
-    }
-
-    @Override
     public <T> void sort(T[] list, Comparator<T> comparator) {
         sort(list, 0, list.length - 1, comparator);
     }

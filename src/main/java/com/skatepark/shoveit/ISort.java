@@ -4,7 +4,9 @@ import java.util.Comparator;
 
 public interface ISort {
 
-    <T> void sort(T[] list);
+    default <T> void sort(T[] list) {
+        sort(list, null);
+    }
 
     <T> void sort(T[] list, Comparator<T> comparator);
 

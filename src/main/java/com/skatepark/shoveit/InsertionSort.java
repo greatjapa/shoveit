@@ -5,11 +5,6 @@ import java.util.Comparator;
 public class InsertionSort implements ISort {
 
     @Override
-    public <T> void sort(T[] list) {
-        sort(list, null);
-    }
-
-    @Override
     public <T> void sort(T[] list, Comparator<T> comparator) {
         for (int i = 0; i < list.length; i++) {
             int j = i;
