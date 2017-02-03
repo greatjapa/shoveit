@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4c421789-ac48-40ec-9062-7481eef15690" name="Default" comment="&#10;&#10;">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/skatepark/shoveit/BubbleSort.java" afterPath="$PROJECT_DIR$/src/main/java/com/skatepark/shoveit/BubbleSort.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/skatepark/shoveit/SelectionSort.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/skatepark/shoveit/ISort.java" afterPath="$PROJECT_DIR$/src/main/java/com/skatepark/shoveit/ISort.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/skatepark/shoveit/InsertionSort.java" afterPath="$PROJECT_DIR$/src/main/java/com/skatepark/shoveit/InsertionSort.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/skatepark/shoveit/MergeSort.java" afterPath="$PROJECT_DIR$/src/main/java/com/skatepark/shoveit/MergeSort.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/skatepark/shoveit/SortTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/skatepark/shoveit/SortTest.java" />
     </list>
     <ignored path="com.skatepark.shoveit.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -30,8 +30,8 @@
       <file leaf-file-name="SortTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/com/skatepark/shoveit/SortTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+            <state relative-caret-position="180">
+              <caret line="14" column="44" selection-start-line="14" selection-start-column="44" selection-end-line="14" selection-end-column="44" />
               <folding />
             </state>
           </provider>
@@ -57,11 +57,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BubbleSort.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="BubbleSort.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/skatepark/shoveit/BubbleSort.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="19" column="29" selection-start-line="19" selection-start-column="29" selection-end-line="19" selection-end-column="29" />
+            <state relative-caret-position="162">
+              <caret line="9" column="12" selection-start-line="9" selection-start-column="12" selection-end-line="9" selection-end-column="12" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SelectionSort.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/skatepark/shoveit/SelectionSort.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="216">
+              <caret line="12" column="38" selection-start-line="12" selection-start-column="38" selection-end-line="12" selection-end-column="38" />
               <folding />
             </state>
           </provider>
@@ -71,10 +81,9 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/com/skatepark/shoveit/ISort.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="180">
-              <caret line="10" column="54" selection-start-line="10" selection-start-column="54" selection-end-line="10" selection-end-column="54" />
+              <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
               <folding>
-                <element signature="e#124#125#0" expanded="true" />
-                <element signature="e#156#157#0" expanded="true" />
+                <element signature="e#180#181#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -109,11 +118,12 @@
         <option value="$PROJECT_DIR$/src/test/java/com/skatepark/shoveit/InsertionSortTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/skatepark/shoveit/AbstractSort.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/skatepark/shoveit/BubbleSortTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/com/skatepark/shoveit/SortTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/skatepark/shoveit/ISort.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/skatepark/shoveit/MergeSort.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/skatepark/shoveit/InsertionSort.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/skatepark/shoveit/BubbleSort.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/skatepark/shoveit/ISort.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/skatepark/shoveit/SelectionSort.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/skatepark/shoveit/SortTest.java" />
       </list>
     </option>
   </component>
@@ -231,8 +241,8 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="Scratches" />
     </panes>
   </component>
@@ -660,19 +670,19 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="BubbleSortTest - 2017.02.02 at 18h 56m 47s.xml">
-      <configuration name="BubbleSortTest" configurationId="JUnit" />
+    <history-entry file="SortTest - 2017.02.03 at 13h 35m 23s.xml">
+      <configuration name="SortTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="BubbleSortTest - 2017.02.02 at 18h 57m 08s.xml">
-      <configuration name="BubbleSortTest" configurationId="JUnit" />
+    <history-entry file="SortTest - 2017.02.03 at 13h 35m 40s.xml">
+      <configuration name="SortTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="BubbleSortTest_threeElements - 2017.02.02 at 18h 56m 59s.xml">
-      <configuration name="BubbleSortTest.threeElements" configurationId="JUnit" />
+    <history-entry file="SortTest - 2017.02.03 at 13h 35m 45s.xml">
+      <configuration name="SortTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="BubbleSortTest_threeElements - 2017.02.02 at 18h 57m 02s.xml">
-      <configuration name="BubbleSortTest.threeElements" configurationId="JUnit" />
+    <history-entry file="SortTest - 2017.02.03 at 13h 37m 28s.xml">
+      <configuration name="SortTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="SortTest - 2017.02.02 at 19h 24m 39s.xml">
+    <history-entry file="SortTest - 2017.02.03 at 13h 38m 48s.xml">
       <configuration name="SortTest" configurationId="JUnit" />
     </history-entry>
     <history-entry file="SortTest_testAllInputs - 2017.02.02 at 19h 18m 42s.xml">
@@ -703,7 +713,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3280255" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3280255" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -760,7 +770,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="4" />
+      <option name="time" value="7" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -769,6 +779,40 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/skatepark/shoveit/MergeSort.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="4" column="41" selection-start-line="4" selection-start-column="41" selection-end-line="4" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/skatepark/shoveit/InsertionSort.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="4" column="45" selection-start-line="4" selection-start-column="45" selection-end-line="4" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/skatepark/shoveit/BubbleSort.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/skatepark/shoveit/ISort.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="10" column="54" selection-start-line="10" selection-start-column="54" selection-end-line="10" selection-end-column="54" />
+          <folding>
+            <element signature="e#180#181#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider editor-type-id="MarkdownFxPreviewEditor">
         <state />
@@ -795,18 +839,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
           <caret line="8" column="54" selection-start-line="8" selection-start-column="54" selection-end-line="8" selection-end-column="54" />
-          <folding />
+          <folding>
+            <element signature="e#180#181#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/skatepark/shoveit/MergeSortTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/skatepark/shoveit/MergeSortTest.java" />
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider editor-type-id="MarkdownFxPreviewEditor">
         <state />
@@ -829,14 +868,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/skatepark/shoveit/MergeSortTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="594">
-          <caret line="33" column="57" selection-start-line="33" selection-start-column="57" selection-end-line="33" selection-end-column="57" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/skatepark/shoveit/MergeSortTest.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/skatepark/shoveit/Printer.java" />
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="MarkdownFxPreviewEditor">
@@ -955,7 +987,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="339">
           <caret line="477" column="18" selection-start-line="477" selection-start-column="18" selection-end-line="477" selection-end-column="18" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1007,7 +1038,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
           <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1015,49 +1045,20 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="178">
           <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/skatepark/shoveit/MergeSortTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/skatepark/shoveit/AbstractSort.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="2" column="42" selection-start-line="2" selection-start-column="42" selection-end-line="2" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/skatepark/shoveit/BubbleSortTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="12" column="51" selection-start-line="12" selection-start-column="51" selection-end-line="12" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/skatepark/shoveit/InsertionSortTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="36" selection-start-line="18" selection-start-column="36" selection-end-line="18" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/skatepark/shoveit/MergeSortTest.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/skatepark/shoveit/AbstractSort.java" />
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/skatepark/shoveit/BubbleSortTest.java" />
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/skatepark/shoveit/InsertionSortTest.java" />
     <entry file="jar://$USER_HOME$/Applications/jdk1.8.0_73/src.zip!/java/util/Arrays.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="303">
           <caret line="142" column="23" selection-start-line="142" selection-start-column="23" selection-end-line="142" selection-end-column="23" />
           <folding>
-            <element signature="e#5027#5028#0" expanded="true" />
-            <element signature="e#5098#5099#0" expanded="true" />
+            <element signature="e#5027#5028#0" expanded="false" />
+            <element signature="e#5098#5099#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1066,26 +1067,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="200">
           <caret line="123" column="23" selection-start-line="123" selection-start-column="23" selection-end-line="123" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/skatepark/shoveit/SortTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/skatepark/shoveit/ISort.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="10" column="54" selection-start-line="10" selection-start-column="54" selection-end-line="10" selection-end-column="54" />
-          <folding>
-            <element signature="e#124#125#0" expanded="true" />
-            <element signature="e#156#157#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1107,8 +1088,34 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/skatepark/shoveit/BubbleSort.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="19" column="29" selection-start-line="19" selection-start-column="29" selection-end-line="19" selection-end-column="29" />
+        <state relative-caret-position="162">
+          <caret line="9" column="12" selection-start-line="9" selection-start-column="12" selection-end-line="9" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/skatepark/shoveit/ISort.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding>
+            <element signature="e#180#181#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/skatepark/shoveit/SortTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="14" column="44" selection-start-line="14" selection-start-column="44" selection-end-line="14" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/skatepark/shoveit/SelectionSort.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="12" column="38" selection-start-line="12" selection-start-column="38" selection-end-line="12" selection-end-column="38" />
           <folding />
         </state>
       </provider>

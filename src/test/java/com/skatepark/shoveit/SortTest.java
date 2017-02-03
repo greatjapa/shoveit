@@ -12,10 +12,13 @@ public class SortTest {
             {5},
             {5, 4},
             {5, 4, 3},
+            {-4, -3, -2, -1, 0, 1, 2, 3, 4},
+            {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12},
+            {4, 5, 7, 3, 1, 234, 67, 34, 12, 565, 8, 9},
             {4, 5, 7, 3, 1, 234, 67, 34, 12, 565, 8, 9, 0, 4, 2, 8, 9, 4, 4, 4, 4, 4, 6, 7, 400}
     };
 
-    private ISort[] algorithms = {new MergeSort(), new BubbleSort(), new InsertionSort()};
+    private ISort[] algorithms = {new SelectionSort(), new MergeSort(), new BubbleSort(), new InsertionSort()};
 
     @Test
     public void testAllInputs() {
