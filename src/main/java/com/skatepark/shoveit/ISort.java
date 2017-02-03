@@ -4,11 +4,11 @@ import java.util.Comparator;
 
 public interface ISort {
 
+    <T> void sort(T[] list, Comparator<T> comparator);
+
     default <T> void sort(T[] list) {
         sort(list, null);
     }
-
-    <T> void sort(T[] list, Comparator<T> comparator);
 
     default <T> int compare(T obj1, T obj2, Comparator<T> comparator) {
         if (comparator != null) {
