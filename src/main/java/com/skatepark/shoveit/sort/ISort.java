@@ -1,4 +1,4 @@
-package com.skatepark.shoveit;
+package com.skatepark.shoveit.sort;
 
 import java.util.Comparator;
 
@@ -6,7 +6,7 @@ public interface ISort {
 
     <T> void sort(T[] list, Comparator<T> comparator);
 
-    default <T> void sort(T[] list) {
+    default <T extends Comparable> void sort(T[] list) {
         sort(list, null);
     }
 
