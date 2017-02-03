@@ -1,4 +1,4 @@
-package com.skatepark.shoveit;
+package com.skatepark.shoveit.sort;
 
 import java.util.Comparator;
 

@@ -1,10 +1,15 @@
-package com.skatepark.shoveit;
+package com.skatepark.shoveit.sort;
+
+import com.skatepark.shoveit.sort.BubbleSort;
+import com.skatepark.shoveit.sort.ISort;
+import com.skatepark.shoveit.sort.InsertionSort;
+import com.skatepark.shoveit.sort.MergeSort;
+import com.skatepark.shoveit.sort.SelectionSort;
 
 import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.Arrays;
-import java.util.List;
 
 public class SortTest {
 
