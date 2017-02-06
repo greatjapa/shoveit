@@ -24,23 +24,6 @@ public class BasicConverter {
         }
         int value = decimal / 16;
         int reminder = decimal % 16;
-
         return dec2Hex(value) + TABLE[reminder];
-
-//        StringBuilder result = new StringBuilder();
-//        while (decimal > 16) {
-//            int value = decimal / 16;
-//            if (value >= 16){
-//                System.out.println(decimal);
-//            }
-//            result.append(TABLE[value]);
-//
-//            decimal = decimal % 16;
-//        }
-//
-//        if (decimal < 16) {
-//            result.append(TABLE[decimal]);
-//        }
-//        return result.toString();
     }
 }
