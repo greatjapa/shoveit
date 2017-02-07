@@ -9,10 +9,11 @@ import java.util.stream.Collectors;
 
 public class SubsetSum {
 
-    public Set<Integer> calc(Set<Integer> set) {
+    public Set<Set<Integer>> calc(Set<Integer> set) {
         List<Integer> list = new ArrayList<>(set);
 
         Set<Set<Integer>> all = getSubsets(set.size(), set.size());
+        Set<Set<Integer>> result = new HashSet<>();
         Iterator<Set<Integer>> iterator = all.iterator();
         while (iterator.hasNext()) {
             Set<Integer> subset = iterator.next();
@@ -23,12 +24,12 @@ public class SubsetSum {
                     .sum();
 
             if (sum == 0) {
-                return subset.stream()
+                result.add(subset.stream()
                         .map(list::get)
-                        .collect(Collectors.toSet());
+                        .collect(Collectors.toSet()));
             }
         }
-        return null;
+        return result;
     }
 
     private static Set<Set<Integer>> getSubsets(int numberOfElements, int order) {
