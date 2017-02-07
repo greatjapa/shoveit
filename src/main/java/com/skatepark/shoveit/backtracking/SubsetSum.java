@@ -11,6 +11,9 @@ import java.util.stream.IntStream;
 public class SubsetSum {
 
     public Set<Set<Integer>> calc(Set<Integer> set) {
+        if (set == null || set.isEmpty()) {
+            return new HashSet<>();
+        }
         List<Integer> list = new ArrayList<>(set);
 
         Set<Set<Integer>> all = getSubsets(set.size(), set.size());
