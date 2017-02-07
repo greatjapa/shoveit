@@ -36,7 +36,7 @@ public class SubsetSum {
         return result;
     }
 
-    private static Set<Set<Integer>> getSubsets(int numberOfElements, int order) {
+    private Set<Set<Integer>> getSubsets(int numberOfElements, int order) {
         if (order == 1) {
             return IntStream.range(0, numberOfElements)
                     .mapToObj(i -> {
