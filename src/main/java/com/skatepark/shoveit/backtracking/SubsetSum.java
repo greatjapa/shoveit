@@ -6,6 +6,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class SubsetSum {
 
@@ -34,13 +35,12 @@ public class SubsetSum {
 
     private static Set<Set<Integer>> getSubsets(int numberOfElements, int order) {
         if (order == 1) {
-            Set<Set<Integer>> result = new HashSet<>();
-            for (int i = 0; i < numberOfElements; i++) {
-                Set<Integer> set = new HashSet<>();
-                set.add(i);
-                result.add(set);
-            }
-            return result;
+            return IntStream.range(0, numberOfElements)
+                    .mapToObj(i -> {
+                        Set<Integer> set = new HashSet<>();
+                        set.add(i);
+                        return set;
+                    }).collect(Collectors.toSet());
         }
         Set<Set<Integer>> result = new HashSet<>();
         Set<Set<Integer>> subsets = getSubsets(numberOfElements, order - 1);
