@@ -12,7 +12,7 @@ public class SubsetSum {
     public Set<Integer> calc(Set<Integer> set) {
         List<Integer> list = new ArrayList<>(set);
 
-        Set<Set<Integer>> all = getAllsubsets(set.size(), set.size());
+        Set<Set<Integer>> all = getSubsets(set.size(), set.size());
         Iterator<Set<Integer>> iterator = all.iterator();
         while (iterator.hasNext()) {
             Set<Integer> subset = iterator.next();
@@ -31,7 +31,7 @@ public class SubsetSum {
         return null;
     }
 
-    private static Set<Set<Integer>> getAllsubsets(int numberOfElements, int order) {
+    private static Set<Set<Integer>> getSubsets(int numberOfElements, int order) {
         if (order == 1) {
             Set<Set<Integer>> result = new HashSet<>();
             for (int i = 0; i < numberOfElements; i++) {
@@ -42,7 +42,7 @@ public class SubsetSum {
             return result;
         }
         Set<Set<Integer>> result = new HashSet<>();
-        Set<Set<Integer>> subsets = getAllsubsets(numberOfElements, order - 1);
+        Set<Set<Integer>> subsets = getSubsets(numberOfElements, order - 1);
         Iterator<Set<Integer>> iterator = subsets.iterator();
         while (iterator.hasNext()) {
             Set<Integer> base = iterator.next();
