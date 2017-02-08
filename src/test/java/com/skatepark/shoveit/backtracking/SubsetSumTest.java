@@ -29,6 +29,13 @@ public class SubsetSumTest {
     }
 
     @Test
+    public void testSevenResults() {
+        List<Integer> list = Arrays.asList(-4, 0, -2, 4, 2, 5);
+        Set<Set<Integer>> result = new SubsetSum().calc(new HashSet<>(list));
+        Assert.assertEquals(7, result.size());
+    }
+
+    @Test
     public void testMoreThanOneResult() {
         List<Integer> list = Arrays.asList(-21, 1, 3, 6, -4, 0, -2, 4, 2, 5);
         Set<Set<Integer>> result = new SubsetSum().calc(new HashSet<>(list));
