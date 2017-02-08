@@ -17,9 +17,9 @@ public class SubsetSum {
         }
         List<Integer> list = new ArrayList<>(set);
 
-        Set<Set<Integer>> all = getSubsets(set.size(), set.size());
+        Set<Set<Integer>> combinations = generateCombinations(set.size(), set.size());
         Set<Set<Integer>> result = new HashSet<>();
-        Iterator<Set<Integer>> iterator = all.iterator();
+        Iterator<Set<Integer>> iterator = combinations.iterator();
         while (iterator.hasNext()) {
             Set<Integer> subset = iterator.next();
 
@@ -37,14 +37,14 @@ public class SubsetSum {
         return result;
     }
 
-    private Set<Set<Integer>> getSubsets(int numberOfElements, int order) {
+    private Set<Set<Integer>> generateCombinations(int numberOfElements, int order) {
         if (order == 1) {
             return IntStream.range(0, numberOfElements)
                     .mapToObj(Collections::singleton)
                     .collect(Collectors.toSet());
         }
         Set<Set<Integer>> result = new HashSet<>();
-        Set<Set<Integer>> subsets = getSubsets(numberOfElements, order - 1);
+        Set<Set<Integer>> subsets = generateCombinations(numberOfElements, order - 1);
         result.addAll(subsets);
 
         for (int i = 0; i < numberOfElements; i++) {
