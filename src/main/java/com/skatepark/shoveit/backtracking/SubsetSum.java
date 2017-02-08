@@ -1,6 +1,7 @@
 package com.skatepark.shoveit.backtracking;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -39,11 +40,8 @@ public class SubsetSum {
     private Set<Set<Integer>> getSubsets(int numberOfElements, int order) {
         if (order == 1) {
             return IntStream.range(0, numberOfElements)
-                    .mapToObj(i -> {
-                        Set<Integer> set = new HashSet<>();
-                        set.add(i);
-                        return set;
-                    }).collect(Collectors.toSet());
+                    .mapToObj(Collections::singleton)
+                    .collect(Collectors.toSet());
         }
         Set<Set<Integer>> result = new HashSet<>();
         Set<Set<Integer>> subsets = getSubsets(numberOfElements, order - 1);
