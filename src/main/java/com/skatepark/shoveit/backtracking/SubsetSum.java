@@ -53,7 +53,7 @@ public class SubsetSum {
             Iterator<Set<Integer>> iterator = subsets.iterator();
             while (iterator.hasNext()) {
                 Set<Integer> elem = iterator.next();
-                if (!elem.contains(i)) {
+                if (elem.size() == order - 1 && !elem.contains(i)) {
                     Set<Integer> newSet = new HashSet<>(elem);
                     newSet.add(i);
                     result.add(newSet);
