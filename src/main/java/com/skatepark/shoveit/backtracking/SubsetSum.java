@@ -47,16 +47,17 @@ public class SubsetSum {
         }
         Set<Set<Integer>> result = new HashSet<>();
         Set<Set<Integer>> subsets = getSubsets(numberOfElements, order - 1);
-        Iterator<Set<Integer>> iterator = subsets.iterator();
-        while (iterator.hasNext()) {
-            Set<Integer> base = iterator.next();
-            Iterator<Set<Integer>> nestedIterator = subsets.iterator();
-            while (nestedIterator.hasNext()) {
-                Set<Integer> elem = nestedIterator.next();
-                Set<Integer> newSet = new HashSet<>();
-                newSet.addAll(base);
-                newSet.addAll(elem);
-                result.add(newSet);
+        result.addAll(subsets);
+
+        for (int i = 0; i < numberOfElements; i++) {
+            Iterator<Set<Integer>> iterator = subsets.iterator();
+            while (iterator.hasNext()) {
+                Set<Integer> elem = iterator.next();
+                if (!elem.contains(i)) {
+                    Set<Integer> newSet = new HashSet<>(elem);
+                    newSet.add(i);
+                    result.add(newSet);
+                }
             }
         }
         return result;

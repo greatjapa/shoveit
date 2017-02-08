@@ -37,12 +37,12 @@ public class SubsetSumTest {
 
     @Test
     public void testMoreThanOneResult() {
-        List<Integer> list = Arrays.asList(-21, 1, 3, 6, -4, 0, -2, 4, 2, 5);
+        List<Integer> list = Arrays.asList(-6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6);
         Set<Set<Integer>> result = new SubsetSum().calc(new HashSet<>(list));
-        Assert.assertEquals(17, result.size());
+        Assert.assertEquals(471, result.size());
 
-        list = Arrays.asList(-21, 1, 3, 6, -4, -2, 4, 2, 5);
+        list = Arrays.asList(-6, -5, -4, -3, -2, -1, 1, 2, 3, 4, 5, 6);
         result = new SubsetSum().calc(new HashSet<>(list));
-        Assert.assertEquals(8, result.size());
+        Assert.assertEquals(235, result.size());
     }
 }
