@@ -1,4 +1,4 @@
-package com.skatepark.shoveit.misc;
+package skatepark.shoveit.misc;
 
 import java.util.Objects;
 

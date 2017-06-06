@@ -1,4 +1,4 @@
-package com.skatepark.shoveit.backtracking;
+package skatepark.shoveit.backtracking;
 
 public interface ICheesBoard {
 

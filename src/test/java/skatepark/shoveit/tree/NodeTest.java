@@ -1,4 +1,4 @@
-package com.skatepark.shoveit.tree;
+package skatepark.shoveit.tree;
 
 import org.junit.Assert;
 import org.junit.Test;
